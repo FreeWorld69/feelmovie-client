@@ -12,8 +12,13 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
 
-//TODO==============================
 
-// video players
-// https://smnbbrv.github.io/ngx-plyr/
-// https://vimejs.com/demo/
+/**
+ * @important
+ *
+ * @video-players
+ * https://smnbbrv.github.io/ngx-plyr, https://vimejs.com/demo
+ *
+ * @icons
+ * https://akveo.github.io/eva-icons/#/
+ */
