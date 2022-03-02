@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieDataService } from "../../../data/modules/movie-data/services/movie-data.service";
 
 @Component({
   selector: 'app-details',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public readonly movieDataService: MovieDataService
+  ) { }
 
   ngOnInit(): void {
   }

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { HelperService } from "../../../data/utils/helper.service";
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public readonly helperService: HelperService
+  ) { }
 
   ngOnInit(): void {
   }

@@ -1,0 +1,50 @@
+@import "src/assets/styles/core/variables";
+@import "src/assets/styles/mixins/opacity";
+
+.head-image-container {
+  position: relative;
+  @include fade-opacity-bottom($color-dark);
+}
+
+.head-image {
+  height: 800px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.overlay {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(5, 5, 5, 0.8);
+  opacity: .9;
+}
+
+.fade-top-and-bottom {
+  //margin: 100px 0;
+  //height: 600px;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 30%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient($color-dark 20%, transparent 100%);
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    height: 30%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(transparent 0%, $color-dark 100%);
+  }
+}

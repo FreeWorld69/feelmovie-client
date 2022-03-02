@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { HelperService } from "../../../data/utils/helper.service";
 
 @Component({
   selector: 'app-error',
   templateUrl: './error.component.html',
-  styleUrls: ['./error.component.scss']
 })
 export class ErrorComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public readonly helperService: HelperService
+  ) { }
 
   ngOnInit(): void {
   }

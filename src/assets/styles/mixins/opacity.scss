@@ -1,0 +1,3 @@
+@mixin fade-opacity-bottom($color) {
+  mask-image: linear-gradient(to bottom, $color 50%, transparent 100%);
+}

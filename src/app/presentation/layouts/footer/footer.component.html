@@ -26,21 +26,17 @@
 
       <!-- Resources -->
       <div class="col-6 col-sm-4 col-md-3">
-        <h6 class="footer__title">Resources</h6>
+        <h6 class="footer__title">Pages</h6>
         <ul class="footer__list">
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Pricing Plan</a></li>
-          <li><a href="#">Help</a></li>
-        </ul>
-      </div>
-
-      <!-- Legals -->
-      <div class="col-6 col-sm-4 col-md-3">
-        <h6 class="footer__title">Legal</h6>
-        <ul class="footer__list">
-          <li><a href="#">Terms of Use</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Security</a></li>
+          <li>
+            <a [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.home)">Home</a>
+          </li>
+          <li>
+            <a [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.catalog)">Catalog</a>
+          </li>
+          <li>
+            <a [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.signUp)">Register</a>
+          </li>
         </ul>
       </div>
     </div>

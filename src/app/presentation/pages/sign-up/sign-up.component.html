@@ -28,7 +28,12 @@
 
             <button class="sign__btn" type="button">Sign up</button>
 
-            <span class="sign__text">Already have an account? <a href="signin.html">Sign in!</a></span>
+            <span class="sign__text">
+              Already have an account?
+              <a [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.signIn)">
+                Sign in!
+              </a>
+            </span>
           </form>
           <!-- registration form -->
         </div>

@@ -1,0 +1,97 @@
+<header class="header">
+  <div class="header__wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="header__content">
+            <!-- header logo -->
+            <a [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.home)" class="header__logo">
+              <img src="assets/img/logo.png" alt=""/>
+            </a>
+
+            <!-- header nav -->
+            <ul class="header__nav">
+              <li class="header__nav-item">
+                <a
+                  class="dropdown-toggle header__nav-link"
+                  href="#"
+                  role="button"
+                  id="dropdownMenuHome"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.home)"
+                >
+                  Home
+                </a>
+              </li>
+
+              <li class="header__nav-item">
+                <a
+                  class="dropdown-toggle header__nav-link"
+                  href="#"
+                  role="button"
+                  id="dropdownMenuCatalog"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.catalog)"
+                >
+                  Catalog
+                </a>
+              </li>
+
+              <li class="header__nav-item">
+                <a
+                  [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.signIn)"
+                  class="join-now-button"
+                >
+                  Sign In
+                </a>
+              </li>
+            </ul>
+
+            <!-- header auth -->
+<!--            <div class="header__auth">-->
+<!--              <button class="header__search-btn" type="button">-->
+<!--                <i class="icon ion-ios-search"></i>-->
+<!--              </button>-->
+
+<!--              <a-->
+<!--                [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.signIn)"-->
+<!--                class="header__sign-in">-->
+<!--                <i class="icon ion-ios-log-in"></i>-->
+<!--                <span>sign in</span>-->
+<!--              </a>-->
+<!--            </div>-->
+
+            <!-- header menu btn -->
+            <button class="header__btn" type="button">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- header search -->
+<!--  <form action="#" class="header__search">-->
+<!--    <div class="container">-->
+<!--      <div class="row">-->
+<!--        <div class="col-12">-->
+<!--          <div class="header__search-content">-->
+<!--            <input-->
+<!--              type="text"-->
+<!--              placeholder="Search for a movie, TV Series that you are looking for"-->
+<!--            />-->
+
+<!--            <button type="button">search</button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </form>-->
+<!--</header>-->

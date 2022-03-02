@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AdvancedMovieCardProps } from "../../components/advanced-movie-card.component";
+import { BasicMovieCardProps } from "../../components/basic-movie-card.component";
+import { MovieDataService } from "../../../data/modules/movie-data/services/movie-data.service";
 
 @Component({
   selector: 'app-home',
@@ -6,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  constructor(
+    public readonly movieDataService: MovieDataService
+  ) { }
 
   ngOnInit(): void {
   }
