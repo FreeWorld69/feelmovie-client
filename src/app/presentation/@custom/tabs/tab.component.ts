@@ -8,13 +8,8 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'my-tab',
-  styles: [`
-    .pane{
-      padding: 1em;
-    }
-  `],
   template: `
-    <div [hidden]="!active" class="pane">
+    <div [hidden]="!active">
       <ng-content></ng-content>
     </div>
   `

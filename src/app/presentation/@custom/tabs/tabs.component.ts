@@ -1,27 +1,25 @@
-import { AfterContentInit, Component, ContentChildren, QueryList } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Input, QueryList } from '@angular/core';
 import { TabComponent } from './tab.component';
 
 @Component({
   selector: 'my-tabs',
   template: `
-    <ul class="content__tabs">
-      <li *ngFor="let tab of tabs" (click)="selectTab(tab)">
-        <a [class.active]="tab.active">{{tab.title}}</a>
-      </li>
-    </ul>
-    <ng-content></ng-content>
+    <div [ngClass]="classNames">
+      <ul class="content__tabs container">
+        <li *ngFor="let tab of tabs" (click)="selectTab(tab)">
+          <a [class.active]="tab.active">{{tab.title}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+        <ng-content></ng-content>
+    </div>
   `,
-  styles: [`
-    .tab-close {
-      color: gray;
-      text-align: right;
-      cursor: pointer;
-    }
-  `],
   styleUrls: ['./tabs.scss']
 })
 export class TabsComponent implements AfterContentInit {
-
+  @Input() classNames: Array<string>;
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
 
   // contentChildren are set
