@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { HelperService } from "../../../data/utils/helper.service";
 
 @Component({
@@ -6,10 +6,17 @@ import { HelperService } from "../../../data/utils/helper.service";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  private static readonly SHOW_STYLE_ON_SCROLL: number = 140;
+  public shouldShowHeadBackground: boolean = false;
+
   constructor(
     public readonly helperService: HelperService
   ) {}
 
-  ngOnInit(): void {}
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    const yScroll = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.shouldShowHeadBackground = yScroll > HeaderComponent.SHOW_STYLE_ON_SCROLL;
+  }
 }

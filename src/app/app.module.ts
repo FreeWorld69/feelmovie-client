@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './presentation/layouts/header/header.component';
 import { FooterComponent } from './presentation/layouts/footer/footer.component';
 import { HomeComponent } from './presentation/pages/home/home.component';
-import { MovieCarouselComponent } from './presentation/pages/home/movie-carousel/movie-carousel.component';
+import { MovieCarouselComponent } from './presentation/components/movie-carousel/movie-carousel.component';
 import { SignInComponent } from './presentation/pages/sign-in/sign-in.component';
 import { SignUpComponent } from './presentation/pages/sign-up/sign-up.component';
 import { ErrorComponent } from './presentation/pages/error/error.component';
@@ -18,8 +18,22 @@ import { routes } from "./routes";
 import { MovieDataModule } from "./data/modules/movie-data/movie-data.module";
 import { SuggestedMovieCarouselComponent } from './presentation/components/suggested-movie-carousel.component';
 import { HeadSectionComponent } from './presentation/pages/home/head-section/head-section.component';
+import { SwiperModule } from "swiper/angular";
+import SwiperCore, { EffectCoverflow, Navigation, Pagination, SwiperOptions } from 'swiper';
+import { TestComponent } from "./presentation/pages/test.component";
+import { TabsModule } from "./presentation/@custom/tabs/tabs.module";
+
+SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
 
 @NgModule({
+  imports: [
+    SwiperModule,
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    MovieDataModule,
+
+    TabsModule
+  ],
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -35,12 +49,8 @@ import { HeadSectionComponent } from './presentation/pages/home/head-section/hea
     BasicMovieCardComponent,
     SuggestedMovieCarouselComponent,
     SuggestedMovieCarouselComponent,
-    HeadSectionComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    MovieDataModule
+    HeadSectionComponent,
+    TestComponent
   ],
   providers: [HelperService],
   bootstrap: [AppComponent]
