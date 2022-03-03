@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './presentation/layouts/header/header.component';
 import { FooterComponent } from './presentation/layouts/footer/footer.component';
 import { HomeComponent } from './presentation/pages/home/home.component';
-import { MovieCarouselComponent } from './presentation/components/movie-carousel/movie-carousel.component';
+import { MovieCarouselComponent } from './presentation/pages/home/movie-carousel/movie-carousel.component';
 import { SignInComponent } from './presentation/pages/sign-in/sign-in.component';
 import { SignUpComponent } from './presentation/pages/sign-up/sign-up.component';
 import { ErrorComponent } from './presentation/pages/error/error.component';
@@ -22,6 +22,9 @@ import { SwiperModule } from "swiper/angular";
 import SwiperCore, { EffectCoverflow, Navigation, Pagination, SwiperOptions } from 'swiper';
 import { TestComponent } from "./presentation/pages/test.component";
 import { TabsModule } from "./presentation/@custom/tabs/tabs.module";
+import { StarSvgComponent } from './presentation/components/svgs/star-svg/star-svg.component';
+import { MovieCarouselItemComponent } from './presentation/pages/home/movie-carousel-item/movie-carousel-item.component';
+import { NumberIteratePipe } from './presentation/pipes/number-iterate.pipe';
 
 SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
 
@@ -50,7 +53,10 @@ SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
     SuggestedMovieCarouselComponent,
     SuggestedMovieCarouselComponent,
     HeadSectionComponent,
-    TestComponent
+    TestComponent,
+    StarSvgComponent,
+    MovieCarouselItemComponent,
+    NumberIteratePipe
   ],
   providers: [HelperService],
   bootstrap: [AppComponent]

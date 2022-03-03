@@ -11,8 +11,10 @@
 
 // load core styles
 @import "core/variables";
-@import "overrides/browser.overrides";
 
+@import "mixins/index";
+
+@import "overrides/browser.overrides";
 @import "overrides/swiper.overrides";
 
 //============================================ new
@@ -50,6 +52,16 @@
 
 .shadow-bottom {
   box-shadow: 0 8px 12px -6px rgb(0 0 0 / 50%);
+}
+
+.fade-opacity-bottom {
+  //@include fade-opacity-bottom($color-dark);
+  //mask-image: linear-gradient(to bottom, #092ee3 90%, transparent 100%);
+  //mask-image: linear-gradient(to bottom, $color-dark 50%, transparent 100%);
+}
+
+.rounded-button {
+  border-radius: 50px !important;
 }
 //============================================
 

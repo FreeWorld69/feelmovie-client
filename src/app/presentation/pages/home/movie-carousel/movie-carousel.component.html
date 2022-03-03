@@ -1,0 +1,65 @@
+<!--<swiper-->
+<!--  #swiperRef-->
+<!--  (slideChange)="onSlideChange()"-->
+<!--  [rewind]="true"-->
+<!--  [effect]="'coverflow'"-->
+<!--  [grabCursor]="true"-->
+<!--  [centeredSlides]="true"-->
+<!--  [slidesPerView]="'auto'"-->
+<!--  [spaceBetween]="120"-->
+<!--  [navigation]="true"-->
+<!--  [coverflowEffect]="{-->
+<!--      rotate: 50,-->
+<!--      stretch: 0,-->
+<!--      depth: 100,-->
+<!--      modifier: 1,-->
+<!--      slideShadows: true-->
+<!--    }"-->
+<!--&gt;-->
+
+<swiper
+  #swiperRef
+  (slideChange)="onSlideChange()"
+  [rewind]="true"
+  [effect]="'flip'"
+  [grabCursor]="true"
+  [centeredSlides]="true"
+  [slidesPerView]="'auto'"
+  [spaceBetween]="350"
+  [navigation]="true"
+>
+  <ng-template swiperSlide>
+  </ng-template>
+
+  <ng-template swiperSlide>
+  </ng-template>
+
+  <ng-template swiperSlide>
+  </ng-template>
+
+  <ng-template swiperSlide>
+  </ng-template>
+
+  <ng-template swiperSlide>
+    <app-movie-carousel-item
+      [imgUrl]="'https://i.pinimg.com/564x/23/2e/10/232e10e134cf1d24f10dae39073377d7&#45;&#45;gifs-anim%C3%A9s-animated-gifs.jpg'"
+      [title]="'The Devil Princess'"
+      [description]="'She is a devil princess from the demon world. She grew up sheltered by her parents and doesn\'t really know\n'+'      how to be evil or any of the common actions, She is unable to cry due to Keita\'s accidental first wish,\n'+'despite needed for him to wish...'"
+      [rating]="1.7"
+      [link]="'/'"
+      [reviewCount]="170"
+    ></app-movie-carousel-item>
+  </ng-template>
+
+  <ng-template swiperSlide>
+  </ng-template>
+
+  <ng-template swiperSlide>
+  </ng-template>
+
+  <ng-template swiperSlide>
+  </ng-template>
+
+  <ng-template swiperSlide>
+  </ng-template>
+</swiper>
