@@ -12,8 +12,10 @@
 // load core styles
 @import "core/variables";
 
+// load mixins
 @import "mixins/index";
 
+// load overrides
 @import "overrides/browser.overrides";
 @import "overrides/swiper.overrides";
 
@@ -63,6 +65,11 @@
 .rounded-button {
   border-radius: 50px !important;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
 //============================================
 
 
@@ -217,6 +224,16 @@
   -moz-transition: 0.4s ease;
   transition: 0.4s ease;
   margin-left: auto;
+}
+
+.header__search-icon {
+  svg {
+    fill: rgba(255, 255, 255, 0.6);
+
+    &:hover {
+      fill: rgba(255, 255, 255, 1);
+    }
+  }
 }
 
 .header__nav:before {
@@ -1041,10 +1058,13 @@
   -webkit-transition: 0.4s ease;
   -moz-transition: 0.4s ease;
   transition: 0.4s ease;
+  height: 100%;
 }
 
 .card__cover img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card__cover:before {
@@ -2053,9 +2073,13 @@
   transition: 0.4s ease;
   position: absolute;
   z-index: 100;
+  overflow: auto;
+  max-height: 190px;
+}
+
+.filter__item-menu-invisible {
   pointer-events: none;
   opacity: 0;
-  max-height: 190px;
 }
 
 .filter__item-menu:before {

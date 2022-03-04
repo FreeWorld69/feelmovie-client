@@ -8,7 +8,7 @@ import { BasicMovieCardProps } from "../../../../presentation/components/basic-m
 export class MovieDataService {
   public readonly movieData:Array<AdvancedMovieCardProps> = [
     {
-      imgSrc: '/src/assets/img/covers/cover2.jpg',
+      imgSrc: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
       link: '#',
       rating: 5.6,
       title: 'I Dream in Another Language',
@@ -16,7 +16,7 @@ export class MovieDataService {
       categories: ['Action', 'Thriller'],
     },
     {
-      imgSrc: '/src/assets/img/covers/cover2.jpg',
+      imgSrc: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
       link: '#',
       rating: 8.0,
       title: 'Benched',
@@ -24,7 +24,7 @@ export class MovieDataService {
       categories: ['Comedy'],
     },
     {
-      imgSrc: '/src/assets/img/covers/cover2.jpg',
+      imgSrc: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
       link: '#',
       rating: 4.6,
       title: 'Whitney',
@@ -32,7 +32,7 @@ export class MovieDataService {
       categories: ['Romance', 'Drama', 'Music'],
     },
     {
-      imgSrc: '/src/assets/img/covers/cover2.jpg',
+      imgSrc: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
       link: '#',
       rating: 6.8,
       title: 'Blindspotting',
@@ -42,42 +42,42 @@ export class MovieDataService {
   ]
   public readonly suggestedMovieData:Array<BasicMovieCardProps> = [
     {
-      imgSrc: '/src/assets/img/covers/cover2.jpg',
+      imgSrc: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
       link: '#',
       rating: 5.6,
       title: 'I Dream in Another Language',
       categories: ['Action', 'Thriller'],
     },
     {
-      imgSrc: '/src/assets/img/covers/cover2.jpg',
+      imgSrc: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
       link: '#',
       rating: 8.0,
       title: 'Benched',
       categories: ['Comedy'],
     },
     {
-      imgSrc: '/src/assets/img/covers/cover2.jpg',
+      imgSrc: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
       link: '#',
       rating: 4.6,
       title: 'Whitney',
       categories: ['Romance', 'Drama', 'Music'],
     },
     {
-      imgSrc: '/src/assets/img/covers/cover2.jpg',
+      imgSrc: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
       link: '#',
       rating: 6.8,
       title: 'Blindspotting',
       categories: ['Comedy', 'Drama'],
     },
     {
-      imgSrc: '/src/assets/img/covers/cover2.jpg',
+      imgSrc: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
       link: '#',
       rating: 8.0,
       title: 'Benched',
       categories: ['Comedy'],
     },
     {
-      imgSrc: '/src/assets/img/covers/cover2.jpg',
+      imgSrc: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
       link: '#',
       rating: 5.6,
       title: 'I Dream in Another Language',

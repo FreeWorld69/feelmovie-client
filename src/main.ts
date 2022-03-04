@@ -16,6 +16,9 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 /**
  * @important
  *
+ * @dropdown
+ * https://ng-select.github.io/ng-select#/data-sources
+ *
  * @video-players
  * https://smnbbrv.github.io/ngx-plyr, https://vimejs.com/demo
  *

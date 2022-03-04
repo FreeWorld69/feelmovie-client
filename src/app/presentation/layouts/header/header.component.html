@@ -11,6 +11,10 @@
 
             <!-- header nav -->
             <ul class="header__nav">
+              <li class="header__nav-item pointer">
+                <app-search-svg [width]="25" [height]="25" [ngClass]="'header__search-icon'"></app-search-svg>
+              </li>
+
               <li class="header__nav-item">
                 <a
                   class="dropdown-toggle header__nav-link"
@@ -50,20 +54,6 @@
                 </a>
               </li>
             </ul>
-
-            <!-- header auth -->
-<!--            <div class="header__auth">-->
-<!--              <button class="header__search-btn" type="button">-->
-<!--                <i class="icon ion-ios-search"></i>-->
-<!--              </button>-->
-
-<!--              <a-->
-<!--                [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.signIn)"-->
-<!--                class="header__sign-in">-->
-<!--                <i class="icon ion-ios-log-in"></i>-->
-<!--                <span>sign in</span>-->
-<!--              </a>-->
-<!--            </div>-->
 
             <!-- header menu btn -->
             <button class="header__btn" type="button">

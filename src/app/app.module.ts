@@ -25,6 +25,11 @@ import { TabsModule } from "./presentation/@custom/tabs/tabs.module";
 import { StarSvgComponent } from './presentation/components/svgs/star-svg/star-svg.component';
 import { MovieCarouselItemComponent } from './presentation/pages/home/movie-carousel-item/movie-carousel-item.component';
 import { NumberIteratePipe } from './presentation/pipes/number-iterate.pipe';
+import { LoaderComponent } from './presentation/@custom/loader/loader.component';
+import { SearchSvgComponent } from './presentation/components/svgs/search-svg/search-svg.component';
+import { FormsModule } from "@angular/forms";
+import { DropdownComponent } from './presentation/@custom/dropdown/dropdown.component';
+import { ClickOutsideDirective } from './presentation/directives/click-outside.directive';
 
 SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
 
@@ -34,8 +39,8 @@ SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
     BrowserModule,
     RouterModule.forRoot(routes),
     MovieDataModule,
-
-    TabsModule
+    TabsModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
@@ -56,7 +61,11 @@ SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
     TestComponent,
     StarSvgComponent,
     MovieCarouselItemComponent,
-    NumberIteratePipe
+    NumberIteratePipe,
+    LoaderComponent,
+    SearchSvgComponent,
+    DropdownComponent,
+    ClickOutsideDirective
   ],
   providers: [HelperService],
   bootstrap: [AppComponent]
