@@ -11,7 +11,7 @@
 
 <ul
   class="filter__item-menu dropdown-menu scrollbar-dropdown"
-  [ngClass]="{'filter__item-menu-invisible': !opened}"
+  [ngClass]="{'invisible': !opened}"
 >
   <li
     *ngFor="let item of items; let i = index"

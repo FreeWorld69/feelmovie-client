@@ -6,11 +6,21 @@
 
       <div class="review">
         <div class="author-review">
-          <app-star-svg *ngFor="let r of rating | numberIterate"></app-star-svg>
+          <app-svg
+            *ngFor="let r of rating | numberIterate"
+            [type]="SvgIcon.STAR"
+            [filled]="true"
+            fill="#fece50">
+          </app-svg>
 
           <!-- if not 5 star rest is outlined -->
           <ng-container *ngIf="rating < 5">
-            <app-star-svg *ngFor="let outlineSvg of 5 - rating | numberIterate" [filled]="false"></app-star-svg>
+            <app-svg
+              *ngFor="let x of 5 - rating | numberIterate"
+              [type]="SvgIcon.STAR"
+              [filled]="false"
+              fill="#fece50">
+            </app-svg>
           </ng-container>
         </div>
         <h4>{{reviewCount}}k reviews</h4>

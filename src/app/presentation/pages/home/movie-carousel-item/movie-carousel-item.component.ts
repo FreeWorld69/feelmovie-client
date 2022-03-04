@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SvgIconEnum } from "../../../components/@custom/svg/svg-icon.enum";
 
 @Component({
   selector: 'app-movie-carousel-item',
@@ -13,5 +14,5 @@ export class MovieCarouselItemComponent {
   @Input() public link: string;
   @Input() public rating: number;
 
-  constructor() { }
+  public SvgIcon = SvgIconEnum;
 }

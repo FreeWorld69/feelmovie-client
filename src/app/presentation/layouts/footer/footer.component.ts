@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HelperService } from "../../../data/utils/helper.service";
 
 @Component({
@@ -6,13 +6,9 @@ import { HelperService } from "../../../data/utils/helper.service";
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 
   constructor(
     public readonly helperService: HelperService
   ) { }
-
-  ngOnInit(): void {
-  }
-
 }

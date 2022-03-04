@@ -8,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 
       <my-tabs>
         <my-tab tabTitle="NEW RELEASES">
-          Tab 1 content
+          <div style="color: white">
+            Tab 1 content
+
+            <button (click)="toggle()" style="color: white;width: 100px;height: 100px;background-color: green">
+
+              <div *ngIf="state; else xxx">1</div>
+              <ng-template #xxx>
+              <div>2</div>
+              </ng-template>
+            </button>
+          </div>
         </my-tab>
         <my-tab tabTitle="MOVIES">
           Tab 2 content
@@ -25,6 +35,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
   constructor() { }
+
+  state = false;
+
+  toggle() {
+    this.state = !this.state;
+  }
 
   ngOnInit(): void {
   }

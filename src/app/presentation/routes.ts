@@ -1,12 +1,12 @@
 import { Routes } from "@angular/router";
-import { HomeComponent } from "./presentation/pages/home/home.component";
-import { CatalogComponent } from "./presentation/pages/catalog/catalog.component";
-import { DetailsComponent } from "./presentation/pages/details/details.component";
-import { SignInComponent } from "./presentation/pages/sign-in/sign-in.component";
-import { SignUpComponent } from "./presentation/pages/sign-up/sign-up.component";
-import { ErrorComponent } from "./presentation/pages/error/error.component";
-import { Configs } from "./data/configs/config";
-import { TestComponent } from "./presentation/pages/test.component";
+import { HomeComponent } from "./pages/home/home.component";
+import { CatalogComponent } from "./pages/catalog/catalog.component";
+import { DetailsComponent } from "./pages/details/details.component";
+import { SignInComponent } from "./pages/sign-in/sign-in.component";
+import { SignUpComponent } from "./pages/sign-up/sign-up.component";
+import { ErrorComponent } from "./pages/error/error.component";
+import { Configs } from "../data/configs/config";
+import { TestComponent } from "./pages/test/test.component";
 
 
 export const routes: Routes = [

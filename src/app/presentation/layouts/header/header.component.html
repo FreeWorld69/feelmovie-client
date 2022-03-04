@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" [ngClass]="{'background-black': searchIsActive}" appClickOutside (clickOutside)="closeSearch()">
   <div class="header__wrap transition-all" [ngClass]="{'background-black': shouldShowHeadBackground}">
     <div class="container">
       <div class="row">
@@ -11,8 +11,18 @@
 
             <!-- header nav -->
             <ul class="header__nav">
-              <li class="header__nav-item pointer">
-                <app-search-svg [width]="25" [height]="25" [ngClass]="'header__search-icon'"></app-search-svg>
+              <li
+                class="header__nav-item pointer"
+                (click)="toggleSearch()"
+                stopPropagation
+              >
+                <app-svg
+                  [ngClass]="'header__search-icon'"
+                  [width]="searchIsActive ? 32 : 25"
+                  [height]="searchIsActive ? 32 : 25"
+                  [type]="searchIsActive ? SvgIcon.CLOSE : SvgIcon.SEARCH"
+                >
+                </app-svg>
               </li>
 
               <li class="header__nav-item">
@@ -68,20 +78,22 @@
   </div>
 
   <!-- header search -->
-<!--  <form action="#" class="header__search">-->
-<!--    <div class="container">-->
-<!--      <div class="row">-->
-<!--        <div class="col-12">-->
-<!--          <div class="header__search-content">-->
-<!--            <input-->
-<!--              type="text"-->
-<!--              placeholder="Search for a movie, TV Series that you are looking for"-->
-<!--            />-->
+  <div
+    style="transition: all 500ms ease-in-out; margin-bottom: 50px"
+    class="container"
+    [ngClass]="{'invisible': !searchIsActive}"
+  >
+      <div class="row">
+        <div class="col-12">
+          <div class="header__search-content">
+            <input
+              type="text"
+              placeholder="Search for a movie, TV Series that you are looking for"
+            />
 
-<!--            <button type="button">search</button>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </form>-->
-<!--</header>-->
+            <button type="button">search</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</header>

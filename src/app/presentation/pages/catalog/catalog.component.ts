@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MovieDataService } from "../../../data/modules/movie-data/services/movie-data.service";
-import { Dropdown } from "../../@custom/dropdown/dropdown.component";
+import { Dropdown } from "../../components/@custom/dropdown/dropdown.component";
 
 @Component({
   selector: 'app-catalog',
