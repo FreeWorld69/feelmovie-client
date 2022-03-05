@@ -1,6 +1,6 @@
+import { Configs } from "./data/configs/config";
 import { Component } from '@angular/core';
 import { Router } from "@angular/router";
-import { Configs } from "./data/configs/config";
 import { HelperService } from "./data/utils/helper.service";
 
 @Component({

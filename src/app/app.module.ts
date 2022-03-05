@@ -10,6 +10,7 @@ import { RoutingModule } from "./presentation/routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { PipeModule } from "./presentation/pipe.module";
 import { PagesModule } from "./presentation/pages.module";
+import { PlyrModule } from "ngx-plyr";
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { PagesModule } from "./presentation/pages.module";
     LayoutModule,
     PipeModule,
     PagesModule,
+    // PlyrModule
   ],
   declarations: [AppComponent],
   providers: [HelperService],

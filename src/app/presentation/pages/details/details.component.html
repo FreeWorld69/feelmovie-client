@@ -1,15 +1,19 @@
 <!-- details -->
 <section class="details">
-  <div class="container">
+  <div class="details-container">
     <div class="row">
       <!-- player -->
-      <div class="col-12 col-xl-6">
-        <app-video></app-video>
-      </div>
+      <div class="col-12">
+        <div class="row video-sidenav-container">
+          <div class="video">
+            <app-video></app-video>
+          </div>
 
-      <!-- accordion -->
-      <div class="col-12 col-xl-6">
-        <app-episode-sidenav></app-episode-sidenav>
+          <!-- accordion -->
+          <div class="sidenav">
+            <app-sidenav></app-sidenav>
+          </div>
+        </div>
       </div>
 
       <app-episode-details
@@ -34,5 +38,8 @@
 </section>
 
 
-<app-suggested-movie-carousel [data]="movieDataService.suggestedMovieData">
-</app-suggested-movie-carousel>
+<div class="mt-15">
+  <app-suggested-movie-carousel [data]="movieDataService.suggestedMovieData">
+  </app-suggested-movie-carousel>
+</div>
+

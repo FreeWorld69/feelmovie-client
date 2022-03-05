@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { SvgIconEnum } from "../../../components/@custom/svg/svg-icon.enum";
 
 @Component({
   selector: 'app-episode-sidenav',
@@ -7,7 +6,5 @@ import { SvgIconEnum } from "../../../components/@custom/svg/svg-icon.enum";
   styleUrls: ['./episode-sidenav.component.scss']
 })
 export class EpisodeSidenavComponent {
-  public SvgIconEnum = SvgIconEnum;
-
   constructor() { }
 }

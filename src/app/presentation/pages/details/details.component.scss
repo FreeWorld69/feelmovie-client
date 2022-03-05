@@ -1,3 +1,41 @@
 .details {
   margin-top: 150px;
 }
+
+.details-container {
+  margin: 0 150px;
+
+  @media (max-width: 1440px) {
+    margin: 0 100px;
+  }
+  @media (max-width: 870px) {
+    margin: 0 50px;
+  }
+}
+
+.video-sidenav-container {
+  display: flex;
+  flex-direction: row;
+
+  .video {
+    width: 70%;
+  }
+
+  .sidenav {
+    flex: 1;
+    margin-left: 20px;
+  }
+
+  @media (max-width: 1440px) {
+    flex-direction: column;
+
+    .video {
+      width: 100%;
+    }
+
+    .sidenav {
+      flex: 1;
+      margin: 50px 0 0 0;
+    }
+  }
+}
