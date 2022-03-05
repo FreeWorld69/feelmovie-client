@@ -1,0 +1,61 @@
+<div class="col-12" style="margin-top: 100px">
+  <h1 class="details__title">{{title}}</h1>
+</div>
+
+<!-- content -->
+<div class="col-10">
+  <div class="card card--details card--series">
+    <div class="row">
+      <!-- card cover -->
+      <div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+        <div class="card__cover">
+          <img [src]="imgSrc" alt="">
+        </div>
+      </div>
+
+      <!-- card content -->
+      <div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-9">
+        <div class="card__content">
+          <div class="card__wrap">
+            <span class="card__rate">
+              <app-svg
+                [filled]="true"
+                [type]="SvgIconEnum.STAR"
+                fill="#ff55a5"
+                class="d-flex align-items-center mr-1">
+              </app-svg>
+              {{rating}}
+            </span>
+
+            <ul class="card__list">
+              <li>HD</li>
+            </ul>
+          </div>
+
+          <ul class="card__meta">
+            <li>
+              <span>Genre:</span>
+              <span class="card__meta-description" *ngFor="let category of categories">{{category}}</span>
+            </li>
+
+            <li>
+              <span>Release year:</span>
+              {{releaseYear}}
+            </li>
+
+            <li>
+              <span>Duration:</span>
+              {{duration}}
+            </li>
+          </ul>
+
+          <div class="card__description card__description--details">
+            {{description}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

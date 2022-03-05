@@ -10,12 +10,15 @@ import { LoaderComponent } from "./components/@custom/loader/loader.component";
 import { TabsComponent } from "./components/@custom/tabs/tabs.component";
 import { TabComponent } from "./components/@custom/tabs/tab.component";
 import { DirectiveModule } from "./directive.module";
+import { AccordionComponent } from './components/@custom/accordion/accordion.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    DirectiveModule
+    DirectiveModule,
+    BrowserAnimationsModule,
   ],
   declarations: [
     DropdownComponent,
@@ -25,13 +28,15 @@ import { DirectiveModule } from "./directive.module";
     SvgComponent,
     AdvancedMovieCardComponent,
     BasicMovieCardComponent,
-    SuggestedMovieCarouselComponent
+    SuggestedMovieCarouselComponent,
+    AccordionComponent
   ],
   exports: [
     DropdownComponent,
     LoaderComponent,
     TabsComponent,
     TabComponent,
+    AccordionComponent,
     SvgComponent,
     AdvancedMovieCardComponent,
     BasicMovieCardComponent,

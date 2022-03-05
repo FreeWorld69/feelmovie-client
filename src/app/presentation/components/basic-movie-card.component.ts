@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SvgIconEnum } from "./@custom/svg/svg-icon.enum";
 
 export interface BasicMovieCardProps {
   imgSrc: string;
@@ -15,7 +16,12 @@ export interface BasicMovieCardProps {
       <div class="card__cover">
         <img [src]="imgSrc" alt="">
         <a [href]="link" class="card__play">
-          <i class="icon ion-ios-play"></i>
+          <app-svg
+            [filled]="true"
+            [type]="SvgIconEnum.PLAY_RIGHT"
+            [width]="50"
+            [height]="50">
+          </app-svg>
         </a>
       </div>
 
@@ -31,7 +37,12 @@ export interface BasicMovieCardProps {
         </span>
 
         <span class="card__rate">
-          <i class="icon ion-ios-star"></i>
+            <app-svg
+              [filled]="true"
+              [type]="SvgIconEnum.STAR"
+              fill="#ff55a5"
+              class="d-flex align-items-center mr-1">
+            </app-svg>
           {{rating}}
         </span>
       </div>
@@ -44,6 +55,8 @@ export class BasicMovieCardComponent implements BasicMovieCardProps {
   @Input() title:string;
   @Input() categories:Array<string>;
   @Input() rating:number;
+
+  public SvgIconEnum = SvgIconEnum;
 
   constructor() { }
 }

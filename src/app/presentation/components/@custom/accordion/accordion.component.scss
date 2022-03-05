@@ -1,0 +1,37 @@
+@import "src/assets/styles/core/variables";
+
+.season-container {
+  background-color: $color-dark;
+
+  .header {
+    cursor: pointer;
+    position: relative;
+    transition: all 300ms;
+
+    &:hover {
+      background-color: transparentize($color-dark-secondary, 0.6);
+    }
+
+    &:active {
+      background-color: transparentize($color-dark, 0.8);
+    }
+  }
+
+  .header-title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .header-subtitle {
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+  }
+}
+
+.rotate {
+  transform: rotate(-90deg);
+  transition: all 250ms;
+}

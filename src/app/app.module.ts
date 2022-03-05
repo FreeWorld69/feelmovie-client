@@ -1,4 +1,3 @@
-import SwiperCore, { EffectCoverflow, Navigation, Pagination} from 'swiper';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HelperService } from "./data/utils/helper.service";
@@ -12,7 +11,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { PipeModule } from "./presentation/pipe.module";
 import { PagesModule } from "./presentation/pages.module";
 
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -23,7 +21,7 @@ import { PagesModule } from "./presentation/pages.module";
     DirectiveModule,
     LayoutModule,
     PipeModule,
-    PagesModule
+    PagesModule,
   ],
   declarations: [AppComponent],
   providers: [HelperService],

@@ -1,20 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { DetailsComponent } from "./details.component";
-import { UtilityModule } from "../../../data/utils/utility.module";
-import { MovieDataModule } from "../../../data/modules/movie-data/movie-data.module";
 import { ComponentModule } from "../../component.module";
+import { EpisodeSidenavComponent } from './episode-sidenav/episode-sidenav.component';
+import { VideoComponent } from './video/video.component';
+import { EpisodeDetailsComponent } from './episode-details/episode-details.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    ComponentModule
+    ComponentModule,
   ],
   declarations: [
-    DetailsComponent
+    DetailsComponent,
+    EpisodeSidenavComponent,
+    VideoComponent,
+    EpisodeDetailsComponent
   ],
   exports: [
-    DetailsComponent
+    DetailsComponent,
   ]
 })
 export class DetailsModule { }

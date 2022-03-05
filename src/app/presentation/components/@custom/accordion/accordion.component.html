@@ -1,0 +1,21 @@
+<div class="season-container">
+  <div
+    (click)="onClick()"
+    class="header d-flex justify-content-between align-items-center p-4">
+    <div>
+      <div class="header-title">{{title}}</div>
+      <div class="header-subtitle">{{subtitle}}</div>
+    </div>
+
+    <app-svg
+      class="mr-3"
+      [height]="30"
+      [width]="30"
+      [ngClass]="{'rotate': opened}"
+      [type]="SvgIconEnum.ARROW_LEFT"></app-svg>
+  </div>
+
+  <div *ngIf="opened" [@enterAnimation]="opened">
+    <ng-content></ng-content>
+  </div>
+</div>

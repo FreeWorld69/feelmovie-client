@@ -1,4 +1,9 @@
-<header class="header" [ngClass]="{'background-black': searchIsActive}" appClickOutside (clickOutside)="closeSearch()">
+<header
+  appClickOutside
+  class="header__main"
+  (clickOutside)="closeSearch()"
+  [ngClass]="{'background-black': searchIsActive}"
+>
   <div class="header__wrap transition-all" [ngClass]="{'background-black': shouldShowHeadBackground}">
     <div class="container">
       <div class="row">
@@ -81,8 +86,10 @@
   <div
     style="transition: all 500ms ease-in-out; margin-bottom: 50px"
     class="container"
-    [ngClass]="{'invisible': !searchIsActive}"
+    *ngIf="searchIsActive"
+    [@enterAnimation]="searchIsActive"
   >
+<!--    [ngClass]="{'invisible': !searchIsActive}"-->
       <div class="row">
         <div class="col-12">
           <div class="header__search-content">
