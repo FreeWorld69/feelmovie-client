@@ -16,7 +16,7 @@ export interface AdvancedMovieCardProps {
     <div class="card card--list">
       <div class="row">
         <div class="col-12 col-sm-4">
-          <div class="card__cover">
+          <div class="card__cover pointer">
             <img [src]="imgSrc" alt="">
 
             <a [href]="link" class="card__play">

@@ -6,6 +6,7 @@ import { ComponentModule } from "./component.module";
 import { RoutingModule } from "./routing.module";
 import { UtilityModule } from "../data/utils/utility.module";
 import { DirectiveModule } from "./directive.module";
+import { PipeModule } from "./pipe.module";
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { DirectiveModule } from "./directive.module";
     RoutingModule,
     ComponentModule,
     DirectiveModule,
-    UtilityModule
+    UtilityModule,
+    PipeModule
   ],
   declarations: [
     HeaderComponent,

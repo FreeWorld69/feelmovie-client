@@ -12,6 +12,7 @@ import { TabComponent } from "./components/@custom/tabs/tab.component";
 import { DirectiveModule } from "./directive.module";
 import { AccordionComponent } from './components/@custom/accordion/accordion.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { SearchMovieCardComponent } from "./components/search-movie-card.component";
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     TabComponent,
     SvgComponent,
     AdvancedMovieCardComponent,
+    SearchMovieCardComponent,
     BasicMovieCardComponent,
     SuggestedMovieCarouselComponent,
     AccordionComponent
@@ -40,7 +42,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     SvgComponent,
     AdvancedMovieCardComponent,
     BasicMovieCardComponent,
-    SuggestedMovieCarouselComponent
+    SuggestedMovieCarouselComponent,
+    SearchMovieCardComponent
   ]
 })
 export class ComponentModule { }

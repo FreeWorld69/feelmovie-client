@@ -89,18 +89,40 @@
     *ngIf="searchIsActive"
     [@enterAnimation]="searchIsActive"
   >
-<!--    [ngClass]="{'invisible': !searchIsActive}"-->
-      <div class="row">
-        <div class="col-12">
-          <div class="header__search-content">
-            <input
-              type="text"
-              placeholder="Search for a movie, TV Series that you are looking for"
-            />
+    <div class="row">
+      <div class="col-12">
+        <div class="header__search-content">
+          <input
+            type="text"
+            placeholder="Search for a movie, TV Series that you are looking for"
+          />
 
-            <button type="button">search</button>
-          </div>
+          <button type="button">search</button>
         </div>
       </div>
+
+<!--      <div class="col-2 mt-5" *ngFor="let i of 10 | numberIterate">-->
+      <div class="col-12 mt-10">
+        <div class="d-flex justify-content-between">
+          <app-search-movie-card
+          *ngFor="let i of 5 | numberIterate;"
+          [link]="'/'"
+          [title]="'Blindspotting'"
+          [imgSrc]="'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'"
+        >
+        </app-search-movie-card>
+        </div>
+
+        <div class="d-flex justify-content-between mt-5">
+          <app-search-movie-card
+            *ngFor="let i of 5 | numberIterate;"
+            [link]="'/'"
+            [title]="'Black widow'"
+            [imgSrc]="'https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg'"
+          >
+          </app-search-movie-card>
+        </div>
+      </div>
+    </div>
   </div>
 </header>

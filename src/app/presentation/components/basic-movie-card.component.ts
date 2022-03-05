@@ -13,7 +13,7 @@ export interface BasicMovieCardProps {
   selector: 'app-basic-movie-card',
   template: `
     <div class="card">
-      <div class="card__cover">
+      <div class="card__cover pointer">
         <img [src]="imgSrc" alt="">
         <a [href]="link" class="card__play">
           <app-svg
