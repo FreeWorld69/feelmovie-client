@@ -10,7 +10,9 @@ import { RoutingModule } from "./presentation/routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { PipeModule } from "./presentation/pipe.module";
 import { PagesModule } from "./presentation/pages.module";
-import { PlyrModule } from "ngx-plyr";
+import { NgxsModule } from "@ngxs/store";
+import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
+import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { PlyrModule } from "ngx-plyr";
     LayoutModule,
     PipeModule,
     PagesModule,
-    // PlyrModule
+    NgxsModule.forRoot([]),
+    NgxsReduxDevtoolsPluginModule,
+    NgxsLoggerPluginModule,
   ],
   declarations: [AppComponent],
   providers: [HelperService],
