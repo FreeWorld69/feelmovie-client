@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { HelperService } from "../../data/utils/helper.service";
+import { HelperService } from "../../utils/helper.service";
 
 @Pipe({
   name: 'pascalCase'

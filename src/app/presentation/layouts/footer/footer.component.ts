@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HelperService } from "../../../data/utils/helper.service";
+import { HelperService } from "../../../utils/helper.service";
 
 @Component({
   selector: 'app-footer',

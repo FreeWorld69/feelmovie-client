@@ -1,7 +1,7 @@
-import { Configs } from "./data/configs/config";
+import { Configs } from "./configs/config";
 import { Component } from '@angular/core';
 import { Router } from "@angular/router";
-import { HelperService } from "./data/utils/helper.service";
+import { HelperService } from "./utils/helper.service";
 
 @Component({
   selector: 'app-root',

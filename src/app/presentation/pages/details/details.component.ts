@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieDataService } from "../../../data/modules/movie-data/services/movie-data.service";
+import { MovieDataService } from "../../../data/movie-data/services/movie-data.service";
 
 @Component({
   selector: 'app-details',

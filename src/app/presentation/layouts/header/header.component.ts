@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { HelperService } from "../../../data/utils/helper.service";
+import { HelperService } from "../../../utils/helper.service";
 import { SvgIconEnum } from "../../components/@custom/svg/svg-icon.enum";
 import { enterAnimation } from "../../animations/enter-animation";
 
