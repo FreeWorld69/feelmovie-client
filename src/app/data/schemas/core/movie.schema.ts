@@ -1,8 +1,9 @@
-import { CoversSchema } from "./core/covers.schema";
-import { CoverSchema } from "./core/cover.schema";
-import { PlotSchema } from "./core/plot.schema";
-import { GenresSchema } from "./core/genre.schema";
-import { SeasonSchema } from "./core/season.schema";
+import { GenresSchema } from "./basics/genre.schema";
+import { CoversSchema } from "./basics/covers.schema";
+import { CoverSchema } from "./basics/cover.schema";
+import { SeasonSchema } from "./basics/season.schema";
+import { PlotSchema } from "./basics/plot.schema";
+
 
 export interface MovieSchema {
     id?: number;

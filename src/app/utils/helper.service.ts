@@ -12,4 +12,8 @@ export class HelperService {
   public capitalizeFirstLetter(string: string): string {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+  public static isDev(): boolean {
+    return Configs.constants.enviroment === 'development';
+  }
 }

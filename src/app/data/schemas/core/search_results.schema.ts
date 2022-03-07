@@ -1,4 +1,4 @@
-import { CoversSchema } from "./core/covers.schema";
+import { CoversSchema } from "./basics/covers.schema";
 
 export interface SearchResultsSchema {
     id?: number;

@@ -14,6 +14,8 @@ import { NgxsModule } from "@ngxs/store";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { environment } from "../environments/environment";
+import { StoreModule } from "./data/modules/store.module";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -27,8 +29,10 @@ import { environment } from "../environments/environment";
     PipeModule,
     PagesModule,
     NgxsModule.forRoot([], { developmentMode: !environment.production }),
-    NgxsReduxDevtoolsPluginModule,
-    NgxsLoggerPluginModule,
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    // NgxsLoggerPluginModule.forRoot(),
+    StoreModule,
+    HttpClientModule
   ],
   declarations: [AppComponent],
   providers: [HelperService],

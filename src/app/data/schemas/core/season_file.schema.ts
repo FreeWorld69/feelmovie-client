@@ -1,5 +1,5 @@
-import { CoversSchema } from "./core/covers.schema";
-import { MovieFilesSchema } from "./core/movie_files.schema";
+import { CoversSchema } from "./basics/covers.schema";
+import { MovieFilesSchema } from "./basics/movie_files.schema";
 
 export interface SeasonFileSchema {
     episode?: number;

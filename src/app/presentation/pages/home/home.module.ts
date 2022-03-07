@@ -6,7 +6,6 @@ import { MovieCarouselItemComponent } from "./movie-carousel-item/movie-carousel
 import { HomeComponent } from "./home.component";
 import { ComponentModule } from "../../component.module";
 import { PipeModule } from "../../pipe.module";
-import { DirectiveModule } from "../../directive.module";
 import { RoutingModule } from "../../routing.module";
 import { SwiperAppModule } from "../../swiper-app.module";
 
@@ -22,7 +21,7 @@ import { SwiperAppModule } from "../../swiper-app.module";
     HomeComponent,
     HeadSectionComponent,
     MovieCarouselComponent,
-    MovieCarouselItemComponent
+    MovieCarouselItemComponent,
   ],
   exports: [
     HomeComponent,

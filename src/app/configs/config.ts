@@ -1,8 +1,13 @@
-console.log(process.env);
-console.log(process.env.NODE_ENV);
-console.log(process.env.NG_APP_API_URL)
-
 export const Configs = {
+  constants : {
+    apiUrl: process.env.NG_APP_API_URL ?? '',
+    enviroment: process.env.NODE_ENV ?? '',
+  },
+
+  backendRoutes : {
+    home: 'home'
+  },
+
   routeRootNames : {
     home: '',
     catalog: 'catalog',
