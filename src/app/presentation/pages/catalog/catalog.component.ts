@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MovieDataService } from "../../../data/movie-data/services/movie-data.service";
+import { MovieDataService } from "../../../movie-data/services/movie-data.service";
 import { Dropdown } from "../../components/@custom/dropdown/dropdown.component";
 
 @Component({

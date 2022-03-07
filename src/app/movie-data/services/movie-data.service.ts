@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import {
   AdvancedMovieCardProps
-} from "../../../presentation/components/advanced-movie-card.component";
-import { BasicMovieCardProps } from "../../../presentation/components/basic-movie-card.component";
+} from "../../presentation/components/advanced-movie-card.component";
+import { BasicMovieCardProps } from "../../presentation/components/basic-movie-card.component";
 
 @Injectable()
 export class MovieDataService {

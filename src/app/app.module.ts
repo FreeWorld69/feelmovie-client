@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HelperService } from "./utils/helper.service";
-import { MovieDataModule } from "./data/movie-data/movie-data.module";
+import { MovieDataModule } from "./movie-data/movie-data.module";
 import { FormsModule } from "@angular/forms";
 import { ComponentModule } from "./presentation/component.module";
 import { DirectiveModule } from "./presentation/directive.module";
