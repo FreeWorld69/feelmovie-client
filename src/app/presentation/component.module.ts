@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SvgComponent } from "./components/@custom/svg/svg.component";
 import { AdvancedMovieCardComponent } from "./components/advanced-movie-card.component";
 import { BasicMovieCardComponent } from "./components/basic-movie-card.component";
-import { SuggestedMovieCarouselCardComponent } from "./components/suggested-movie-carousel-card.component";
+import { BasicMovieCarouselCardComponent } from "./components/basic-movie-carousel-card.component";
 import { FormsModule } from "@angular/forms";
 import { DropdownComponent } from "./components/@custom/dropdown/dropdown.component";
 import { LoaderComponent } from "./components/@custom/loader/loader.component";
@@ -30,7 +30,7 @@ import { SearchMovieCardComponent } from "./components/search-movie-card.compone
     AdvancedMovieCardComponent,
     SearchMovieCardComponent,
     BasicMovieCardComponent,
-    SuggestedMovieCarouselCardComponent,
+    BasicMovieCarouselCardComponent,
     AccordionComponent
   ],
   exports: [
@@ -42,7 +42,7 @@ import { SearchMovieCardComponent } from "./components/search-movie-card.compone
     SvgComponent,
     AdvancedMovieCardComponent,
     BasicMovieCardComponent,
-    SuggestedMovieCarouselCardComponent,
+    BasicMovieCarouselCardComponent,
     SearchMovieCardComponent
   ]
 })

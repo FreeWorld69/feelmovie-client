@@ -13,7 +13,7 @@ import { TempHelper } from "../../tempHelper";
   encapsulation: ViewEncapsulation.None
 })
 export class MovieCarouselComponent implements AfterViewInit {
-  @ViewChild('swiperRef', { static: false }) swiper?: SwiperComponent;
+  @ViewChild('homeHeaderSwiperRef', { static: false }) homeHeaderSwiper?: SwiperComponent;
   @Select(HomeState.selectSuggestedMovies) homeSuggestedMovies$: Observable<MovieSchema[]>;
 
   constructor(
@@ -29,6 +29,6 @@ export class MovieCarouselComponent implements AfterViewInit {
   }
 
   private slideToCenter(): void {
-    this.swiper?.swiperRef.slideTo(4, 0);
+    this.homeHeaderSwiper?.swiperRef.slideTo(4, 0);
   }
 }

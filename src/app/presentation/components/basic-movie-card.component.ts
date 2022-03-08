@@ -11,10 +11,17 @@ export interface BasicMovieCardProps {
 
 @Component({
   selector: 'app-basic-movie-card',
+  styles: [`
+    .image {
+      width: 222px;
+      height: auto;
+    }
+  `],
   template: `
     <div class="card">
       <div class="card__cover pointer">
-        <img [src]="imgSrc" alt="">
+        <img [src]="imgSrc" class="image" alt="">
+
         <a [href]="link" class="card__play">
           <app-svg
             [filled]="true"
@@ -33,7 +40,11 @@ export interface BasicMovieCardProps {
         </h3>
 
         <span class="card__category">
-            <span *ngFor="let category of categories">{{category}}</span>
+            <ng-container *ngFor="let category of categories; let i = index">
+              <span *ngIf="i <= 2">
+                {{category}}
+              </span>
+            </ng-container>
         </span>
 
         <span class="card__rate">
