@@ -2,6 +2,7 @@ import { StateToken } from "@ngxs/store";
 import { MovieSchema } from "../../schemas/core/movie.schema";
 
 export interface HomeStateModel {
+  activeHeaderSwiperMovie: MovieSchema,
   movies: MovieSchema[],
   suggestedMovies: MovieSchema[],
   topMovies: MovieSchema[]

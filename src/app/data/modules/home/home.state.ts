@@ -7,6 +7,7 @@ import { MovieSchema } from "../../schemas/core/movie.schema";
 @State({
   name: HOME_STATE_TOKEN,
   defaults: {
+    activeHeaderSwiperMovie: {},
     movies: [],
     topMovies: [],
     suggestedMovies: []
@@ -16,25 +17,24 @@ import { MovieSchema } from "../../schemas/core/movie.schema";
 export class HomeState {
   @Action(HomeActions.SetMovies)
   public setMovies(ctx: StateContext<HomeStateModel>, action: HomeActions.SetMovies): void {
-    console.log(ctx);
-
-    ctx.patchState({
-      movies: action.movies
-    });
+    ctx.patchState({movies: action.movies});
   }
 
   @Action(HomeActions.SetSuggestedMovies)
   public setSuggestedMovies(ctx: StateContext<HomeStateModel>, action: HomeActions.SetSuggestedMovies): void {
-    ctx.patchState({
-      suggestedMovies: action.movies
-    });
+    ctx.patchState({suggestedMovies: action.movies});
   }
 
   @Action(HomeActions.SetTopMovies)
   public setTopMovies(ctx: StateContext<HomeStateModel>, action: HomeActions.SetTopMovies): void {
-    ctx.patchState({
-      topMovies: action.movies
-    });
+    ctx.patchState({topMovies: action.movies});
+  }
+
+  @Action(HomeActions.SetHeaderSwiperActiveMovie)
+  public setHeaderSwiperActiveMovie(ctx: StateContext<HomeStateModel>, action: HomeActions.SetHeaderSwiperActiveMovie): void {
+    console.log('------------')
+    console.log(action.movie)
+    ctx.patchState({activeHeaderSwiperMovie: action.movie});
   }
 
   @Selector([HOME_STATE_TOKEN])
@@ -48,5 +48,9 @@ export class HomeState {
   @Selector([HOME_STATE_TOKEN])
   public static selectSuggestedMovies(state: HomeStateModel): MovieSchema[] {
     return state.suggestedMovies;
+  }
+  @Selector([HOME_STATE_TOKEN])
+  public static selectActiveHeaderSwiperMovie(state: HomeStateModel): MovieSchema {
+    return state.activeHeaderSwiperMovie;
   }
 }

@@ -12,13 +12,22 @@ export interface BasicMovieCardProps {
 @Component({
   selector: 'app-basic-movie-card',
   styles: [`
-    .image {
-      width: 222px;
-      height: auto;
+    .simple-card {
+      width: 210px;
+      user-select: none;
+
+      .image {
+        width: 210px;
+        height: auto;
+        max-height: 210px;
+        object-fit: cover;
+        object-position: center;
+      }
     }
+
   `],
   template: `
-    <div class="card">
+    <div class="card simple-card">
       <div class="card__cover pointer">
         <img [src]="imgSrc" class="image" alt="">
 

@@ -1,41 +1,40 @@
 <app-head-section>
-    <app-movie-carousel></app-movie-carousel>
+  <app-movie-carousel></app-movie-carousel>
 </app-head-section>
 
 <app-basic-movie-carousel-card>
   <swiper
     #topMovieSwiperRef
-    slideClass="suggested-swiper-slide"
     [loop]="true"
     [effect]="'flip'"
     [grabCursor]="true"
-    [centeredSlides]="true"
     [navigation]="true"
-    [slidesPerView]="'auto'"
-    [spaceBetween]="25"
+    [slidesPerView]="5"
+    [spaceBetween]="50"
   >
+<!--    [slidesPerView]="'auto'"-->
     <ng-container *ngFor="let topMovie of homeTopMovies$ | async">
       <ng-template swiperSlide>
-          <app-basic-movie-card
-            [imgSrc]="topMovie?.covers?.s510 ?? topMovie?.covers?.s367 ?? ''"
-            [link]="'/'"
-            [rating]="topMovie?.imdb ?? 0"
-            [title]="topMovie?.engTitle ?? ''"
-            [categories]="tempHelper.getGenres(topMovie?.genres)"
-          >
-          </app-basic-movie-card>
+        <app-basic-movie-card
+          [imgSrc]="topMovie?.covers?.s510 ?? topMovie?.covers?.s367 ?? ''"
+          [link]="'/'"
+          [rating]="topMovie?.imdb ?? 0"
+          [title]="topMovie?.engTitle ?? ''"
+          [categories]="tempHelper.getGenres(topMovie?.genres)"
+        >
+        </app-basic-movie-card>
 
-<!--            <app-basic-movie-card-->
-<!--              [imgSrc]="'https://i.pinimg.com/564x/23/2e/10/232e10e134cf1d24f10dae39073377d7&#45;&#45;gifs-anim%C3%A9s-animated-gifs.jpg'"-->
-<!--              [link]="'/'"-->
-<!--              [rating]="1.7"-->
-<!--              [title]="x + ' <&#45;&#45;The Devil Princess'"-->
-<!--              [categories]="['Wassup', 'Hello']"-->
-<!--            >-->
-<!--            </app-basic-movie-card>-->
+        <!--            <app-basic-movie-card-->
+        <!--              [imgSrc]="'https://i.pinimg.com/564x/23/2e/10/232e10e134cf1d24f10dae39073377d7&#45;&#45;gifs-anim%C3%A9s-animated-gifs.jpg'"-->
+        <!--              [link]="'/'"-->
+        <!--              [rating]="1.7"-->
+        <!--              [title]="x + ' <&#45;&#45;The Devil Princess'"-->
+        <!--              [categories]="['Wassup', 'Hello']"-->
+        <!--            >-->
+        <!--            </app-basic-movie-card>-->
       </ng-template>
     </ng-container>
-</swiper>
+  </swiper>
 </app-basic-movie-carousel-card>
 
 <section class="content" style="margin-top: 100px">
@@ -70,10 +69,10 @@
           </div>
         </div>
 
-        <!-- show more -->
-        <div class="col-12">
-          <a href="#" class="section__btn">Show more</a>
-        </div>
+        <!--TODO show more -->
+        <!--        <div class="col-12">-->
+        <!--          <a href="#" class="section__btn">Show more</a>-->
+        <!--        </div>-->
       </div>
     </my-tab>
     <my-tab tabTitle="MOVIES">

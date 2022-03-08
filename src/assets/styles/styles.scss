@@ -910,6 +910,10 @@
 .section__btn-glowing {
   opacity: 1;
   color: #fff;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .section__wrap {

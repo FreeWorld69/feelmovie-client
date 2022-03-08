@@ -7,9 +7,11 @@ import { VideoComponent } from './video/video.component';
 import { EpisodeDetailsComponent } from './episode-details/episode-details.component';
 import { PlyrModule } from "ngx-plyr";
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { SwiperModule } from "swiper/angular";
 
 @NgModule({
   imports: [
+    SwiperModule,
     CommonModule,
     ComponentModule,
     PlyrModule
