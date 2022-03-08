@@ -1,7 +1,5 @@
 <app-head-section>
-  <div class="swiper-div">
     <app-movie-carousel></app-movie-carousel>
-  </div>
 </app-head-section>
 
 <div class="mt-10">
@@ -13,7 +11,7 @@
           [link]="'/'"
           [rating]="topMovie?.imdb ?? 0"
           [title]="topMovie?.engTitle ?? ''"
-          [categories]="getGenres(topMovie?.genres)"
+          [categories]="tempHelper.getGenres(topMovie?.genres)"
         >
         </app-basic-movie-card>
       </div>
@@ -21,9 +19,6 @@
   </app-suggested-movie-carousel>
 </div>
 
-
-
-<!-- content -->
 <section class="content" style="margin-top: 200px">
   <!-- content title -->
   <div class="container">
@@ -47,12 +42,11 @@
                   [link]="'/'"
                   [rating]="movie?.imdb ?? 0"
                   [title]="movie?.engTitle ?? ''"
-                  [categories]="getGenres(movie?.genres)"
-                  [description]="getDescription(movie?.plots)"
+                  [categories]="tempHelper.getGenres(movie?.genres)"
+                  [description]="tempHelper.getDescription(movie?.plots)"
                 >
                 </app-advanced-movie-card>
               </div>
-
             </div>
           </div>
         </div>

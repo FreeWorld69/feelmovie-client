@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./head-section.component.scss']
 })
 export class HeadSectionComponent {
-  constructor() { }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MovieDataService } from "../../../movie-data/services/movie-data.service";
 
 @Component({
@@ -6,13 +6,8 @@ import { MovieDataService } from "../../../movie-data/services/movie-data.servic
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class DetailsComponent implements OnInit {
-
+export class DetailsComponent {
   constructor(
     public readonly movieDataService: MovieDataService
   ) { }
-
-  ngOnInit(): void {
-  }
-
 }
