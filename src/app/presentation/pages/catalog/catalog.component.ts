@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MovieDataService } from "../../../movie-data/services/movie-data.service";
 import { Dropdown } from "../../components/@custom/dropdown/dropdown.component";
 
 @Component({
@@ -8,9 +7,7 @@ import { Dropdown } from "../../components/@custom/dropdown/dropdown.component";
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent {
-  constructor(
-    public readonly movieDataService: MovieDataService
-  ) { }
+  constructor() { }
 
   log(event: Dropdown.EmitItemProps) {
     console.log(event)

@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Configs } from "../configs/config";
+import { Configs } from "../shared/config";
+import { LanguagesEnum } from "../shared/enums/languages.enum";
+import { MovieFilesSchema } from "../data/schemas/core/basics/movie_files.schema";
 
 @Injectable()
 export class HelperService {

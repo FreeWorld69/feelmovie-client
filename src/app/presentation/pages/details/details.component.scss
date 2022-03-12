@@ -1,5 +1,55 @@
+@import "src/assets/styles/core/variables";
+
+$plyr-color: #0FB3FF;
+
 .details {
   margin-top: 150px;
+}
+
+.video-series {
+  width: 70%;
+}
+
+.video-movie {
+  height: 610px;
+  width: 1090px;
+  overflow: hidden;
+}
+
+
+.movies-language-options {
+  .language-container {
+    padding: 20px 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .language-item {
+    border: 0.05px solid $plyr-color;
+    color: $plyr-color;
+    padding: 5px 15px;
+    font-size: 14px;
+    transition: all 800ms;
+
+    &:hover {
+      background-color: $plyr-color;
+      box-shadow: 0 0 20px 0 $plyr-color;
+      color: white;
+    }
+
+    &:first-child {
+      margin-right: 10px;
+    }
+
+    &:last-child {
+      margin-left: 10px;
+    }
+  }
+
+  .language-item-active {
+    background-color: $plyr-color;
+    color: white;
+  }
 }
 
 .details-container {
@@ -16,10 +66,6 @@
 .video-sidenav-container {
   display: flex;
   flex-direction: row;
-
-  .video {
-    width: 70%;
-  }
 
   .sidenav {
     flex: 1;

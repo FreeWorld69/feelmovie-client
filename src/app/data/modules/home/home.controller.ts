@@ -18,12 +18,8 @@ export class HomeController {
       this.store.dispatch([
         new HomeActions.SetMovies(data.movies),
         new HomeActions.SetTopMovies(data.topMovies),
-        new HomeActions.SetSuggestedMovies(data.popularMovies)
+        new HomeActions.SetPopularMovies(data.popularMovies)
       ])
     });
-  }
-
-  public setHeaderSwiperActiveMovie(data: MovieSchema) {
-    this.store.dispatch(new HomeActions.SetHeaderSwiperActiveMovie(data));
   }
 }

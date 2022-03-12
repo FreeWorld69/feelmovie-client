@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { NetworkProvider } from "../network.provider";
 import { HomeResponse } from "../../schemas/network/response/home.response";
-import { Configs } from "../../../configs/config";
+import { Configs } from "../../../shared/config";
 import { Observable } from "rxjs";
 
 @Injectable()

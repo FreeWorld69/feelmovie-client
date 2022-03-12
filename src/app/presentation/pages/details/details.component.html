@@ -1,79 +1,171 @@
 <!-- details -->
-<section class="details">
-  <div class="details-container">
-    <div class="row">
-      <!-- player -->
-      <div class="col-12">
-        <div class="row video-sidenav-container">
-          <div class="video">
-            <app-video></app-video>
+<ng-container *ngIf="detailedMovieDetails$ | async as detailedMovieDetails">
+  <ng-container *ngIf="detailedMovie$ | async as detailedMovie">
+    <section class="details">
+      <div class="details-container">
+        <!-- Condition -->
+        <div *ngIf="detailedMovieDetails?.isSeries; then isSeries else isMovie"></div>
+
+        <!-- სერიალები -->
+        <ng-template #isSeries>
+          <div class="video-sidenav-container">
+            <div class="video-series">
+              <app-video></app-video>
+            </div>
+
+            <div class="sidenav">
+              <app-sidenav></app-sidenav>
+            </div>
           </div>
 
-          <!-- accordion -->
-          <div class="sidenav">
-            <app-sidenav></app-sidenav>
+          <div class="video-series">
+            <app-episode-details
+              [imgSrc]="detailedMovieDetails?.poster ?? detailedMovieDetails?.posterS240 ?? ''"
+              [releaseYear]="detailedMovieDetails?.releaseYear ?? ''"
+              [duration]="detailedMovieDetails?.duration?.toString() ?? ''"
+              [title]="detailedMovieDetails?.engTitle ?? detailedMovieDetails?.geoTitle ?? ''"
+              [rating]="detailedMovieDetails?.imdb ?? 0"
+              [categories]="tempHelper.getGenres(detailedMovieDetails?.genres)"
+              [description]="tempHelper.getDescription(detailedMovieDetails?.plots)"
+            ></app-episode-details>
           </div>
-        </div>
+        </ng-template>
+
+        <!-- ფილმი -->
+        <ng-template #isMovie>
+          <div class="video-sidenav-container justify-content-center">
+            <div class="video-movie">
+              <app-video></app-video>
+            </div>
+          </div>
+
+          <div class="video-movie" style="margin: 0 auto">
+            <div class="movies-language-options">
+              <div class="language-container">
+                <div
+                  *ngFor="let movie of detailedMovie.movieFiles"
+                  class="language-item pointer"
+                  [ngClass]="{'language-item-active': movie.lang === detailedMovieDetails.activeLanguage}"
+                  (click)="onLanguageClick(movie.lang)"
+                >
+                  {{movie.lang}}
+                </div>
+              </div>
+            </div>
+
+            <app-episode-details
+              [imgSrc]="detailedMovieDetails?.poster ?? detailedMovieDetails?.posterS240 ?? ''"
+              [releaseYear]="detailedMovieDetails?.releaseYear ?? ''"
+              [duration]="detailedMovieDetails?.duration?.toString() ?? ''"
+              [title]="detailedMovieDetails?.engTitle ?? detailedMovieDetails?.geoTitle ?? ''"
+              [rating]="detailedMovieDetails?.imdb ?? 0"
+              [categories]="tempHelper.getGenres(detailedMovieDetails?.genres)"
+              [description]="tempHelper.getDescription(detailedMovieDetails?.plots)"
+            ></app-episode-details>
+          </div>
+        </ng-template>
       </div>
-
-      <app-episode-details
-        imgSrc="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"
-        releaseYear="2017"
-        duration="120 min"
-        title="I Dream in Another Language"
-        [rating]="6.4"
-        description="It is a long established fact that a reader will be distracted by the
-                      readable content of a page when looking at its layout. The point of using
-                      Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                      opposed to using 'Content here, content here', making it look like readable
-                      English. Many desktop publishing packages and web page editors now use Lorem
-                      Ipsum as their default model text, and a search for 'lorem ipsum' will
-                      uncover many web sites still in their infancy. Various versions have evolved
-                      over the years, sometimes by accident, sometimes on purpose (injected humour
-                      and the like)."
-        [categories]="['Action', 'Trailer']"
-      ></app-episode-details>
-    </div>
-  </div>
-</section>
+    </section>
+  </ng-container>
+</ng-container>
 
 
-<app-basic-movie-carousel-card>
-  <swiper
-    #topMovieSwiperRef
-    [loop]="true"
-    [effect]="'flip'"
-    [grabCursor]="true"
-    [navigation]="true"
-    [slidesPerView]="5"
-    [spaceBetween]="50"
-  >
-    <!--    [slidesPerView]="'auto'"-->
-    <ng-container *ngFor="let x of [1,2,3,4,5,6,7,8,9,10]">
-      <ng-template swiperSlide>
-        <app-basic-movie-card
-          [imgSrc]="'https://i.pinimg.com/564x/23/2e/10/232e10e134cf1d24f10dae39073377d7--gifs-anim%C3%A9s-animated-gifs.jpg'"
-          [link]="'/'"
-          [rating]="1.7"
-          [title]="x + ' <--The Devil Princess'"
-          [categories]="['Wassup', 'Hello']"
-        >
-        </app-basic-movie-card>
-      </ng-template>
-    </ng-container>
+<!--Second-->
+<!--========-->
+<!--<ng-container *ngIf="detailedMovieDetails$ | async as detailedMovieDetails">-->
+<!--  <section class="details">-->
+<!--    <div class="details-container">-->
+<!--      &lt;!&ndash; player &ndash;&gt;-->
+<!--      <div-->
+<!--        class="video-sidenav-container"-->
+<!--        [ngClass]="{'justify-content-center': !detailedMovieDetails?.isSeries}"-->
+<!--      >-->
+<!--        <div [class]="detailedMovieDetails?.isSeries ? 'video-series' : 'video-movie'">-->
+<!--          <app-video></app-video>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; accordion &ndash;&gt;-->
+<!--        <div class="sidenav" *ngIf="detailedMovieDetails?.isSeries ?? false">-->
+<!--          <app-sidenav></app-sidenav>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div-->
+<!--        [class]="detailedMovieDetails?.isSeries ? 'video-series' : 'video-movie'"-->
+<!--        [ngStyle]="{'margin': detailedMovieDetails?.isSeries ? '' : '0 auto'}"-->
+<!--      >-->
+<!--        <app-episode-details-->
+<!--          [imgSrc]="detailedMovieDetails?.poster ?? detailedMovieDetails?.posterS240 ?? ''"-->
+<!--          [releaseYear]="detailedMovieDetails?.releaseYear ?? ''"-->
+<!--          [duration]="detailedMovieDetails?.duration?.toString() ?? ''"-->
+<!--          [title]="detailedMovieDetails?.engTitle ?? detailedMovieDetails?.geoTitle ?? ''"-->
+<!--          [rating]="detailedMovieDetails?.imdb ?? 0"-->
+<!--          [categories]="tempHelper.getGenres(detailedMovieDetails?.genres)"-->
+<!--          [description]="tempHelper.getDescription(detailedMovieDetails?.plots)"-->
+<!--        ></app-episode-details>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </section>-->
+<!--</ng-container>-->
 
 
-    <!--    <ng-container *ngFor="let topMovie of homeTopMovies$ | async">-->
-    <!--      <ng-template swiperSlide>-->
-    <!--        <app-basic-movie-card-->
-    <!--          [imgSrc]="topMovie?.covers?.s510 ?? topMovie?.covers?.s367 ?? ''"-->
-    <!--          [link]="'/'"-->
-    <!--          [rating]="topMovie?.imdb ?? 0"-->
-    <!--          [title]="topMovie?.engTitle ?? ''"-->
-    <!--          [categories]="tempHelper.getGenres(topMovie?.genres)"-->
-    <!--        >-->
-    <!--        </app-basic-movie-card>-->
-    <!--      </ng-template>-->
-    <!--    </ng-container>-->
-  </swiper>
-</app-basic-movie-carousel-card>
+<!--First-->
+<!--========-->
+<!--      <app-episode-details-->
+<!--        imgSrc="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg"-->
+<!--        releaseYear="2017"-->
+<!--        duration="120 min"-->
+<!--        title="I Dream in Another Language"-->
+<!--        [rating]="6.4"-->
+<!--        description="It is a long established fact that a reader will be distracted by the-->
+<!--                      readable content of a page when looking at its layout. The point of using-->
+<!--                      Lorem Ipsum is that it has a more-or-less normal distribution of letters, as-->
+<!--                      opposed to using 'Content here, content here', making it look like readable-->
+<!--                      English. Many desktop publishing packages and web page editors now use Lorem-->
+<!--                      Ipsum as their default model text, and a search for 'lorem ipsum' will-->
+<!--                      uncover many web sites still in their infancy. Various versions have evolved-->
+<!--                      over the years, sometimes by accident, sometimes on purpose (injected humour-->
+<!--                      and the like)."-->
+<!--        [categories]="['Action', 'Trailer']"-->
+<!--      ></app-episode-details>-->
+
+
+<!--<app-basic-movie-carousel-card>-->
+<!--  <swiper-->
+<!--    #topMovieSwiperRef-->
+<!--    [loop]="true"-->
+<!--    [effect]="'flip'"-->
+<!--    [grabCursor]="true"-->
+<!--    [navigation]="true"-->
+<!--    [slidesPerView]="5"-->
+<!--    [spaceBetween]="50"-->
+<!--  >-->
+<!--    &lt;!&ndash;    [slidesPerView]="'auto'"&ndash;&gt;-->
+<!--    <ng-container *ngFor="let x of [1,2,3,4,5,6,7,8,9,10]">-->
+<!--      <ng-template swiperSlide>-->
+<!--        <app-basic-movie-card-->
+<!--          [imgSrc]="'https://i.pinimg.com/564x/23/2e/10/232e10e134cf1d24f10dae39073377d7&#45;&#45;gifs-anim%C3%A9s-animated-gifs.jpg'"-->
+<!--          [link]="'/'"-->
+<!--          [rating]="1.7"-->
+<!--          [title]="x + ' <&#45;&#45;The Devil Princess'"-->
+<!--          [categories]="['Wassup', 'Hello']"-->
+<!--        >-->
+<!--        </app-basic-movie-card>-->
+<!--      </ng-template>-->
+<!--    </ng-container>-->
+
+
+<!--    &lt;!&ndash;    <ng-container *ngFor="let topMovie of homeTopMovies$ | async">&ndash;&gt;-->
+<!--    &lt;!&ndash;      <ng-template swiperSlide>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <app-basic-movie-card&ndash;&gt;-->
+<!--    &lt;!&ndash;          [imgSrc]="topMovie?.covers?.s510 ?? topMovie?.covers?.s367 ?? ''"&ndash;&gt;-->
+<!--    &lt;!&ndash;          [link]="'/'"&ndash;&gt;-->
+<!--    &lt;!&ndash;          [rating]="topMovie?.imdb ?? 0"&ndash;&gt;-->
+<!--    &lt;!&ndash;          [title]="topMovie?.engTitle ?? ''"&ndash;&gt;-->
+<!--    &lt;!&ndash;          [categories]="tempHelper.getGenres(topMovie?.genres)"&ndash;&gt;-->
+<!--    &lt;!&ndash;        >&ndash;&gt;-->
+<!--    &lt;!&ndash;        </app-basic-movie-card>&ndash;&gt;-->
+<!--    &lt;!&ndash;      </ng-template>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </ng-container>&ndash;&gt;-->
+<!--  </swiper>-->
+<!--</app-basic-movie-carousel-card>-->

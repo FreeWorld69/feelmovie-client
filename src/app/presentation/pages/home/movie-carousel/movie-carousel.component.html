@@ -1,8 +1,6 @@
-<!--  (swiper)="onSwiper($event)"-->
 <swiper
   #homeHeaderSwiperRef
   class="head-swiper"
-  (slideChange)="onSlideChange($event)"
   [observeParents]="true"
   [effect]="'flip'"
   [grabCursor]="true"
@@ -11,16 +9,16 @@
   [navigation]="true"
   [slidesPerView]="'auto'"
 >
-  <ng-container *ngIf="homeSuggestedMovies$">
-    <ng-container *ngFor="let suggestedMovie of homeSuggestedMovies$ | async">
+  <ng-container *ngIf="homePopularMovies$">
+    <ng-container *ngFor="let popularMovie of homePopularMovies$ | async">
       <ng-template swiperSlide>
         <app-movie-carousel-item
-          [imgUrl]="suggestedMovie?.covers?.s1050 ?? ''"
-          [title]="suggestedMovie?.engTitle ?? ''"
-          [description]="tempHelper.getDescription(suggestedMovie?.plots)"
-          [rating]="suggestedMovie?.imdb ?? 0"
+          [imgUrl]="popularMovie?.covers?.s1050 ?? ''"
+          [title]="popularMovie?.engTitle ?? ''"
+          [description]="tempHelper.getDescription(popularMovie?.plots)"
+          [rating]="popularMovie?.imdb ?? 0"
           [link]="'/'"
-          [releaseYear]="suggestedMovie?.releaseYear ?? ''"
+          [releaseYear]="popularMovie?.releaseYear ?? ''"
         ></app-movie-carousel-item>
       </ng-template>
     </ng-container>

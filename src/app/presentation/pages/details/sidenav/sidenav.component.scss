@@ -66,6 +66,19 @@
         box-shadow: 0 0 20px 0 rgba(255, 88, 96, 0.5);
         color: white;
       }
+
+      &:first-child {
+        margin-right: 10px;
+      }
+
+      &:last-child {
+        margin-left: 10px;
+      }
+    }
+
+    .accordion-badge-active {
+      background-color: $color-primary;
+      color: white;
     }
   }
 

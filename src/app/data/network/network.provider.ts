@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Configs } from "../../configs/config";
+import { Configs } from "../../shared/config";
 import { HttpClient } from "@angular/common/http";
 import { Observable, timeout } from "rxjs";
 

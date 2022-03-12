@@ -1,4 +1,4 @@
-import { Configs } from "./configs/config";
+import { Configs } from "./shared/config";
 import { Component } from '@angular/core';
 import { Router } from "@angular/router";
 import { HelperService } from "./utils/helper.service";

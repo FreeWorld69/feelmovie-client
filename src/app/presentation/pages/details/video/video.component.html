@@ -7,13 +7,17 @@
 <!--</plyr>-->
 
 
-<div
-  style="display: block; width: 100%;height: 100%"
-  plyr
-  plyrTitle="Custom video"
-  [plyrPlaysInline]="true"
-  [plyrPoster]="poster"
-  [plyrSources]="videoSources"
-  [plyrTracks]="tracks"
-  (plyrInit)="player = $event"
-  (plyrPlay)="played($event)"></div>
+<ng-container *ngIf="movieDetails$ | async as movieDetails">
+  <ng-container *ngIf="videoSources$ | async as videoSources">
+    <div
+      style="display: block; width: 100%;height: 100%"
+      plyr
+      plyrTitle="Custom video"
+      [plyrPlaysInline]="true"
+      [plyrPoster]="movieDetails?.covers?.s1920 ?? ''"
+      [plyrSources]="videoSources"
+      (plyrPlay)="played($event)"></div>
+  </ng-container>
+</ng-container>
+
+

@@ -5,6 +5,8 @@ import { NgxsModule } from "@ngxs/store";
 import { HomeState } from "./home/home.state";
 import { SearchState } from "./search/search.state";
 import { DetailedMovieState } from "./detailed/detailed-movie.state";
+import { DetailedMovieController } from "./detailed/detailed-movie.controller";
+import { DetailedService } from "./detailed/services/detailed.service";
 
 @NgModule({
   imports: [
@@ -12,7 +14,10 @@ import { DetailedMovieState } from "./detailed/detailed-movie.state";
     NgxsModule.forFeature([HomeState, DetailedMovieState, SearchState])
   ],
   providers: [
-    HomeController
+    HomeController,
+    DetailedMovieController,
+
+    DetailedService
   ]
 })
 export class StoreModule {
