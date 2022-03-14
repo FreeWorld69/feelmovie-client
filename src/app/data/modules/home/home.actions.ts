@@ -18,5 +18,11 @@ export namespace HomeActions {
 
     constructor(public movies: MovieSchema[]) {}
   }
+
+  export class SetActiveHeadImage {
+    public static readonly type: string = '[Home] set home state extras';
+
+    constructor(public image: string) {}
+  }
 }
 

@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    // this.homeController.initHomeData();
+    this.homeController.initHomeData();
   }
 
   ngAfterViewInit(): void {

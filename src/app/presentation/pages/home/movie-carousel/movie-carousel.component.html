@@ -8,6 +8,7 @@
   [spaceBetween]="350"
   [navigation]="true"
   [slidesPerView]="'auto'"
+  (activeIndexChange)="onSwiper($event)"
 >
   <ng-container *ngIf="homePopularMovies$">
     <ng-container *ngFor="let popularMovie of homePopularMovies$ | async">

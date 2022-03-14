@@ -1,6 +1,10 @@
 <section>
   <div class="head-image-container">
-    <img src="assets/img/head-background.jpg" class="head-image" alt=""/>
+    <img
+      *ngIf="extras$ | async as extras"
+      [src]="extras?.activeHeadImage ?? 'assets/img/head-background.jpg'"
+      class="head-image"
+      alt=""/>
     <div class="overlay"></div>
 
     <div class="swiper-div">

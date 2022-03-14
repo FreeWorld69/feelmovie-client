@@ -3,6 +3,7 @@
 
 .head-image-container {
   position: relative;
+  overflow: hidden; // for blur this is needed (what an actual fuck !!!!)
 }
 
 .head-image {
@@ -11,6 +12,7 @@
   object-fit: cover;
   aspect-ratio: 16 / 9;
   object-position: center;
+  filter: blur(5px);
 }
 
 .overlay {
@@ -20,37 +22,13 @@
   left: 0;
   bottom: 0;
   right: 0;
+  height: 100%;
+
   //opacity: 0.9;
   //$overlay-color: rgba(5, 5, 5, 0.85);
   //background-image: linear-gradient(to bottom, $overlay-color 10%, black 100%);
 
   background-image: linear-gradient(to bottom, rgba(5, 5, 5, 0.8) 97%, #13151F 100%);
-}
-
-.fade-top-and-bottom {
-  //margin: 100px 0;
-  //height: 600px;
-  position: relative;
-
-  &::after {
-    position: absolute;
-    content: "";
-    height: 30%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background: linear-gradient($color-dark 20%, transparent 100%);
-  }
-
-  &::before {
-    position: absolute;
-    content: "";
-    height: 30%;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(transparent 0%, $color-dark 100%);
-  }
 }
 
 .swiper-div {
@@ -59,6 +37,5 @@
   right: 0;
   bottom: 0;
   left: 0;
-
   padding-top: 180px;
 }

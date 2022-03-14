@@ -22,4 +22,8 @@ export class HomeController {
       ])
     });
   }
+
+  public setActiveHeadImage(src: string): void {
+    this.store.dispatch(new HomeActions.SetActiveHeadImage(src));
+  }
 }
