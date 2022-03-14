@@ -5,7 +5,7 @@ import { Select } from "@ngxs/store";
 import { HomeState } from "../../../../data/modules/home/home.state";
 import { Observable } from "rxjs";
 import { TempHelper } from "../../tempHelper";
-import { HomeController } from "../../../../data/modules/home/home.controller";
+import { HelperService } from "../../../../utils/helper.service";
 
 @Component({
   selector: 'app-movie-carousel',
@@ -19,7 +19,7 @@ export class MovieCarouselComponent implements AfterViewInit {
 
   constructor(
     public tempHelper: TempHelper,
-    public homeController: HomeController
+    public helperService: HelperService
   ) { }
 
   ngAfterViewInit() {

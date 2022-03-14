@@ -12,26 +12,16 @@
     [slidesPerView]="5"
     [spaceBetween]="50"
   >
-<!--    [slidesPerView]="'auto'"-->
     <ng-container *ngFor="let topMovie of homeTopMovies$ | async">
       <ng-template swiperSlide>
         <app-basic-movie-card
           [imgSrc]="topMovie?.covers?.s510 ?? topMovie?.covers?.s367 ?? ''"
-          [link]="'/'"
+          [link]="helperService.configs.routeRootNames.details.build(topMovie?.movieDetailsId ?? 0)"
           [rating]="topMovie?.imdb ?? 0"
           [title]="topMovie?.engTitle ?? ''"
           [categories]="tempHelper.getGenres(topMovie?.genres)"
         >
         </app-basic-movie-card>
-
-        <!--            <app-basic-movie-card-->
-        <!--              [imgSrc]="'https://i.pinimg.com/564x/23/2e/10/232e10e134cf1d24f10dae39073377d7&#45;&#45;gifs-anim%C3%A9s-animated-gifs.jpg'"-->
-        <!--              [link]="'/'"-->
-        <!--              [rating]="1.7"-->
-        <!--              [title]="x + ' <&#45;&#45;The Devil Princess'"-->
-        <!--              [categories]="['Wassup', 'Hello']"-->
-        <!--            >-->
-        <!--            </app-basic-movie-card>-->
       </ng-template>
     </ng-container>
   </swiper>
@@ -57,7 +47,7 @@
               >
                 <app-advanced-movie-card
                   [imgSrc]="movie?.covers?.s510 ?? ''"
-                  [link]="'/'"
+                  [link]="helperService.configs.routeRootNames.details.build(movie?.movieDetailsId ?? 0)"
                   [rating]="movie?.imdb ?? 0"
                   [title]="movie?.engTitle ?? ''"
                   [categories]="tempHelper.getGenres(movie?.genres)"
@@ -68,11 +58,6 @@
             </div>
           </div>
         </div>
-
-        <!--TODO show more -->
-        <!--        <div class="col-12">-->
-        <!--          <a href="#" class="section__btn">Show more</a>-->
-        <!--        </div>-->
       </div>
     </my-tab>
     <my-tab tabTitle="MOVIES">
@@ -87,3 +72,19 @@
   </my-tabs>
 </section>
 
+
+<!--
+TODO show more
+<div class="col-12">
+  <a href="#" class="section__btn">Show more</a>
+</div>
+
+<app-basic-movie-card
+  [imgSrc]="'https://i.pinimg.com/564x/23/2e/10/232e10e134cf1d24f10dae39073377d7--gifs-anim%C3%A9s-animated-gifs.jpg'"
+  [link]="'/'"
+  [rating]="1.7"
+  [title]="x + ' <--The Devil Princess'"
+  [categories]="['Wassup', 'Hello']"
+>
+</app-basic-movie-card>
+-->

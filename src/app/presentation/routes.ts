@@ -12,7 +12,7 @@ import { TestComponent } from "./pages/test/test.component";
 export const routes: Routes = [
   { path: Configs.routeRootNames.home, component: HomeComponent },
   { path: Configs.routeRootNames.catalog, component: CatalogComponent },
-  { path: Configs.routeRootNames.details, component: DetailsComponent },
+  { path: Configs.routeRootNames.details.name, component: DetailsComponent },
   { path: Configs.routeRootNames.signIn, component: SignInComponent },
   { path: Configs.routeRootNames.signUp, component: SignUpComponent },
 

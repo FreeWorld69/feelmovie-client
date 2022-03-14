@@ -12,6 +12,10 @@ platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
 
 
+//TODO links broken
+// http://localhost:4200/details/878561310
+// http://localhost:4200/details/878442668
+
 
 /**
  * @important

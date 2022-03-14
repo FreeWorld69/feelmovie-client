@@ -15,7 +15,10 @@ export const Configs = {
   routeRootNames : {
     home: '',
     catalog: 'catalog',
-    details: 'details/:id',
+    details: {
+      name: 'details/:id',
+      build: (id: number) => `details/${id}`
+    },
     signIn: 'sign-in',
     signUp: 'sign-up',
     error: '404',
