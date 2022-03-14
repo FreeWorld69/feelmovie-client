@@ -7,16 +7,10 @@ import { RoutingModule } from "./routing.module";
 import { UtilityModule } from "../utils/utility.module";
 import { DirectiveModule } from "./directive.module";
 import { PipeModule } from "./pipe.module";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RoutingModule,
-    ComponentModule,
-    DirectiveModule,
-    UtilityModule,
-    PipeModule
-  ],
+  imports: [CommonModule, RoutingModule, ComponentModule, DirectiveModule, UtilityModule, PipeModule, FormsModule],
   declarations: [
     HeaderComponent,
     FooterComponent

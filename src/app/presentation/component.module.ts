@@ -13,14 +13,10 @@ import { DirectiveModule } from "./directive.module";
 import { AccordionComponent } from './components/@custom/accordion/accordion.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SearchMovieCardComponent } from "./components/search-movie-card.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    DirectiveModule,
-    BrowserAnimationsModule,
-  ],
+    imports: [CommonModule, FormsModule, DirectiveModule, BrowserAnimationsModule, RouterModule,],
   declarations: [
     DropdownComponent,
     LoaderComponent,

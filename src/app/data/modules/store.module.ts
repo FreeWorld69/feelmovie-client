@@ -7,6 +7,8 @@ import { SearchState } from "./search/search.state";
 import { DetailedMovieState } from "./detailed/detailed-movie.state";
 import { DetailedMovieController } from "./detailed/detailed-movie.controller";
 import { DetailedService } from "./detailed/services/detailed.service";
+import { SearchController } from "./search/search.controller";
+import { SearchService } from "./search/services/search.service";
 
 @NgModule({
   imports: [
@@ -16,8 +18,10 @@ import { DetailedService } from "./detailed/services/detailed.service";
   providers: [
     HomeController,
     DetailedMovieController,
+    SearchController,
 
-    DetailedService
+    DetailedService,
+    SearchService
   ]
 })
 export class StoreModule {

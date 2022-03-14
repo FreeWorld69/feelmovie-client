@@ -10,7 +10,8 @@
         <div class="col-12">
           <div class="header__content">
             <!-- header logo -->
-            <a [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.home)" class="header__logo">
+            <a [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.home)"
+               class="header__logo">
               <img src="assets/img/logo.png" alt=""/>
             </a>
 
@@ -44,21 +45,6 @@
                   Home
                 </a>
               </li>
-
-<!--              <li class="header__nav-item">-->
-<!--                <a-->
-<!--                  class="dropdown-toggle header__nav-link"-->
-<!--                  href="#"-->
-<!--                  role="button"-->
-<!--                  id="dropdownMenuCatalog"-->
-<!--                  data-toggle="dropdown"-->
-<!--                  aria-haspopup="true"-->
-<!--                  aria-expanded="false"-->
-<!--                  [routerLink]="helperService.routeCheckFormat(helperService.shared.routeRootNames.catalog)"-->
-<!--                >-->
-<!--                  Catalog-->
-<!--                </a>-->
-<!--              </li>-->
 
               <li class="header__nav-item">
                 <a
@@ -95,33 +81,47 @@
           <input
             type="text"
             placeholder="Search for a movie, TV Series that you are looking for"
+            [(ngModel)]="searchInputText"
+            (keyup)="onSearchInputKeyUp()"
           />
-
-          <button type="button">search</button>
         </div>
       </div>
 
-      <div class="col-12 mt-10">
-        <div class="d-flex justify-content-between">
-          <app-search-movie-card
-          *ngFor="let i of 5 | numberIterate;"
-          [link]="'/'"
-          [title]="'Blindspotting'"
-          [imgSrc]="'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'"
+      <div class="col-12 mt-10 search-cards-container">
+        <app-search-movie-card
+          *ngFor="let searchResult of searchResults$ | async"
+          (redirected)="closeSearch()"
+          [link]="helperService.configs.routeRootNames.details.build(searchResult?.movieDetailsId ?? 0)"
+          [title]="searchResult?.engTitle ?? searchResult?.geoTitle ?? ''"
+          [imgSrc]="searchResult?.posterS240 ?? searchResult?.poster ?? searchResult?.covers?.s1920 ?? ''"
         >
         </app-search-movie-card>
-        </div>
-
-        <div class="d-flex justify-content-between mt-5">
-          <app-search-movie-card
-            *ngFor="let i of 5 | numberIterate;"
-            [link]="'/'"
-            [title]="'Black widow'"
-            [imgSrc]="'https://lumiere-a.akamaihd.net/v1/images/p_blackwidow_21043_v2_6d1b73b8.jpeg'"
-          >
-          </app-search-movie-card>
-        </div>
       </div>
     </div>
   </div>
 </header>
+
+<!--
+<li class="header__nav-item">
+  <a
+    class="dropdown-toggle header__nav-link"
+    href="#"
+    role="button"
+    id="dropdownMenuCatalog"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    [routerLink]="helperService.routeCheckFormat(helperService.shared.routeRootNames.catalog)"
+  >
+    Catalog
+  </a>
+</li>
+
+<app-search-movie-card
+  *ngFor="let i of 10 | numberIterate;"
+  [link]="'/'"
+  [title]="'Blindspotting'"
+  [imgSrc]="'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'"
+>
+</app-search-movie-card>
+-->

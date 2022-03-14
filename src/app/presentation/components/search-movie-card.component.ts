@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SvgIconEnum } from "./@custom/svg/svg-icon.enum";
 
 interface SearchMovieCardProps {
@@ -11,7 +11,7 @@ interface SearchMovieCardProps {
   selector: 'app-search-movie-card',
   styles: [`
     .search-movie-card {
-      width: 190px;
+      //width: 190px;
       height: 190px;
       position: relative;
 
@@ -41,30 +41,36 @@ interface SearchMovieCardProps {
     }
   `],
   template: `
-    <div class="search-movie-card">
-      <img [src]="imgSrc" alt="">
-      <div class="overlay"></div>
-      <div class="title">
-        {{title}}
+    <a [routerLink]="link" (click)="onRedirected()">
+      <div class="search-movie-card pointer">
+        <img [src]="imgSrc" alt="">
+        <div class="overlay"></div>
+        <div class="title">
+          {{title}}
+        </div>
+        <!--      <a [href]="link" class="">-->
+        <!--        <app-svg-->
+        <!--          [filled]="true"-->
+        <!--          [type]="SvgIconEnum.PLAY_RIGHT"-->
+        <!--          [width]="50"-->
+        <!--          [height]="50">-->
+        <!--        </app-svg>-->
+        <!--      </a>-->
       </div>
-<!--      <a [href]="link" class="">-->
-<!--        <app-svg-->
-<!--          [filled]="true"-->
-<!--          [type]="SvgIconEnum.PLAY_RIGHT"-->
-<!--          [width]="50"-->
-<!--          [height]="50">-->
-<!--        </app-svg>-->
-<!--      </a>-->
-    </div>
+    </a>
   `
 })
 export class SearchMovieCardComponent implements SearchMovieCardProps {
   @Input() imgSrc: string;
   @Input() link: string;
   @Input() title: string;
-
+  @Output() redirected = new EventEmitter<boolean>()
   public SvgIconEnum = SvgIconEnum;
 
   constructor() { }
+
+  onRedirected() {
+    this.redirected.emit(true);
+  }
 }
 
