@@ -4,6 +4,7 @@ import { Store } from "@ngxs/store";
 import { DetailsApiService } from "../../network/store/details-api.service";
 import { DetailedService } from "./services/detailed.service";
 import { DetailedMovieState } from "./detailed-movie.state";
+import { SeriesObject } from "./detailed-movie.metadata";
 
 @Injectable()
 export class DetailedMovieController {
@@ -12,7 +13,7 @@ export class DetailedMovieController {
     private readonly detailedService: DetailedService,
     private readonly store: Store,
   ) {}
-  public initDetailedData(movieDetailsId: number) {
+  public initDetailedData(movieDetailsId: number): void {
     const detailedMovieResponse = this.detailsApiService.fetchDetails(movieDetailsId);
 
     detailedMovieResponse.subscribe(data => {
@@ -47,7 +48,7 @@ export class DetailedMovieController {
     this.detailedService.setVideoSources(movieFile); // set active video source
   }
 
-  public setSeries(season: number, episode: number, lang?: string) {
+  public setSeries(season: number, episode: number, lang?: string): void {
     const series = this.store.selectSnapshot(DetailedMovieState.selectSeries);
     const movieFiles = series
       ?.find(el => el.number === season)
@@ -65,5 +66,18 @@ export class DetailedMovieController {
     this.detailedService.setActiveEpisode(episode);
     this.detailedService.setActiveLanguage(movieLang); // set active language
     this.detailedService.setVideoSources(movieFile); // set active video source
+  }
+
+  public toggleLoading(season: number, payload: boolean): void {
+    console.log('toggled')
+    this.store.dispatch(new DetailedMovieActions.UpdateSeriesLoading(season, payload));
+  }
+
+  public fetchAndSetSeries(id: number, season: number) {
+    const seriesDataResponse = this.detailsApiService.fetchSeries(id, season)
+
+    seriesDataResponse.subscribe(seriesData => {
+      this.store.dispatch(new DetailedMovieActions.UpdateSeries(seriesData, season));
+    })
   }
 }

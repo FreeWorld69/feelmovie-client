@@ -24,15 +24,13 @@ export class DetailedService {
         const series = seasonsData?.slice()?.map(el => {
           const temp = Object.assign({}, el) as SeriesObject;
 
-          if (el.number === season) {
-            temp.data = seriesData;
-          }
-          else {
-            temp.data = [];
-          }
+          // add required fields
+          temp.data = el.number === season ? seriesData : [];
+          temp.screenLoading = false;
+          temp.opened = false;
 
           return temp;
-        }) as SeriesObject[]
+        }) as SeriesObject[];
 
         this.store.dispatch(new DetailedMovieActions.SetSeries(series));
       })

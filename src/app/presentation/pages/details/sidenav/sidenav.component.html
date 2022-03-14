@@ -5,8 +5,10 @@
         *ngFor="let seriesObject of series;"
         [title]="'Season: ' + (seriesObject.number)"
         [subtitle]="seriesObject.episodesCount + ' Episodes'"
+        (accordionToggle)="toggleAccordion(seriesObject.opened, seriesObject.number)"
+        [opened]="seriesObject.opened || false"
       >
-        <div class="episodes-container" *ngIf="seriesObject.data?.length">
+        <div class="episodes-container" *ngIf="seriesObject.data?.length;">
           <div
             *ngFor="let episode of seriesObject.data;"
             [class.active-episode-item]="seriesObject.number === detailedMovieDetails.activeSeason && episode.episode === detailedMovieDetails.activeEpisode"
@@ -31,14 +33,12 @@
                 >
                   {{movieFile.lang}}
                 </button>
-
-<!--                <button class="accordion-badge">ENG</button>-->
-<!--                <button class="accordion-badge ml-2">GEO</button>-->
-<!--                <button class="accordion-badge ml-2">RUS</button>-->
               </div>
             </div>
           </div>
         </div>
+
+        <app-loader *ngIf="seriesObject.screenLoading" [type]="2"></app-loader>
       </app-accordion>
     </div>
   </ng-container>

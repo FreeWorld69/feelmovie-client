@@ -2,6 +2,7 @@
 
 .season-container {
   background-color: $color-dark;
+  user-select: none;
 
   .header {
     cursor: pointer;

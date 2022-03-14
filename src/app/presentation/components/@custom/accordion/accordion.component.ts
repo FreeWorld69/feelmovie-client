@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { SvgIconEnum } from "../svg/svg-icon.enum";
 import { enterAnimation } from "../../../animations/enter-animation";
 
@@ -9,16 +9,15 @@ import { enterAnimation } from "../../../animations/enter-animation";
   animations: [enterAnimation],
 })
 export class AccordionComponent {
-  @Input() public title: string;
-  @Input() public subtitle: string;
 
-  public opened: boolean = false;
   public SvgIconEnum = SvgIconEnum;
 
-  constructor() { }
+  @Input() public title: string;
+  @Input() public subtitle: string;
+  @Output() public accordionToggle = new EventEmitter();
+  @Input() public opened: boolean;
 
   onClick() {
-    this.opened = !this.opened;
-    console.log(123)
+    this.accordionToggle.emit();
   }
 }

@@ -1,9 +1,10 @@
+import Plyr from "plyr";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
+import { patch, updateItem } from "@ngxs/store/operators";
+import { Injectable } from "@angular/core";
 import { DetailedMovieStateModel, DM_STATE_TOKEN, ExtendedDetails, SeriesObject } from "./detailed-movie.metadata";
 import { DetailedMovieActions } from "./detailed-movie.actions";
 import { SeasonFileSchema } from "../../schemas/core/season_file.schema";
-import { Injectable } from "@angular/core";
-import Plyr from "plyr";
 
 
 type CurrentCtx = StateContext<DetailedMovieStateModel>;
@@ -57,15 +58,14 @@ export class DetailedMovieState {
 
   @Action(DetailedMovieActions.UpdateSeries)
   public updateSeries(ctx: CurrentCtx, action: DetailedMovieActions.UpdateSeries): void {
-    const series = ctx.getState().series.map(el => {
-      if (el.number === action.season) {
-        el.data = action.seasonData;
-      }
-
-      return el;
-    })
-
-    ctx.patchState({series});
+    ctx.setState(
+      patch({
+        series: updateItem<SeriesObject>(
+          el => el?.number === action.season,
+          patch({data: action.seasonData})
+        )
+      })
+    )
   }
 
   @Action(DetailedMovieActions.SetActiveLanguage)
@@ -95,5 +95,29 @@ export class DetailedMovieState {
     const updatedDetails = {...currentDetails, activeEpisode: action.episode }
 
     ctx.patchState({details: updatedDetails})
+  }
+
+  @Action(DetailedMovieActions.UpdateSeriesLoading)
+  public updateSeriesLoading(ctx: CurrentCtx, action: DetailedMovieActions.UpdateSeriesLoading): void {
+    ctx.setState(
+      patch({
+        series: updateItem<SeriesObject>(
+          el => el?.number === action.season,
+          patch({screenLoading: action.screenLoading})
+        )
+      })
+    )
+  }
+
+  @Action(DetailedMovieActions.ToggleAccordion)
+  public toggleAccordion(ctx: CurrentCtx, action: DetailedMovieActions.ToggleAccordion): void {
+    ctx.setState(
+      patch({
+        series: updateItem<SeriesObject>(
+          el => el?.number === action.season,
+          patch({opened: action.opened})
+        )
+      })
+    )
   }
 }
