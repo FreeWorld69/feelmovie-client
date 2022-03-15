@@ -5,9 +5,9 @@ import { HomeActions } from "../../../../data/modules/home/home.actions";
 import { Actions, ofActionDispatched, Select } from "@ngxs/store";
 import { HomeState } from "../../../../data/modules/home/home.state";
 import { first, Observable, tap } from "rxjs";
-import { TempHelper } from "../../tempHelper";
 import { HelperService } from "../../../../utils/helper.service";
 import { HomeController } from "../../../../data/modules/home/home.controller";
+import { Helper } from "../../../../utils/helper";
 
 @Component({
   selector: 'app-movie-carousel',
@@ -20,7 +20,7 @@ export class MovieCarouselComponent implements AfterViewInit {
   @Select(HomeState.selectPopularMovies) homePopularMovies$: Observable<MovieSchema[]>;
 
   constructor(
-    public tempHelper: TempHelper,
+    public tempHelper: Helper,
     public helperService: HelperService,
     private readonly homeController: HomeController,
     private readonly actions: Actions

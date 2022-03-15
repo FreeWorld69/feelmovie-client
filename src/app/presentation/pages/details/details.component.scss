@@ -37,12 +37,10 @@ $plyr-color: #0FB3FF;
       color: white;
     }
 
-    &:first-child {
-      margin-right: 10px;
-    }
+    margin-left: 10px;
 
-    &:last-child {
-      margin-left: 10px;
+    &:first-child {
+      margin-left: 0;
     }
   }
 

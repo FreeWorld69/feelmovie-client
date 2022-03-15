@@ -7,6 +7,7 @@ import { SearchController } from "../../../data/modules/search/search.controller
 import { Select } from "@ngxs/store";
 import { SearchState } from "../../../data/modules/search/search.state";
 import { SearchResultsSchema } from "../../../data/schemas/core/search_results.schema";
+import { Helper } from "../../../utils/helper";
 
 @Component({
   selector: 'app-header',
@@ -26,11 +27,16 @@ export class HeaderComponent {
 
   constructor(
     private readonly searchController: SearchController,
-    public readonly helperService: HelperService
+    public readonly helperService: HelperService,
+    public tempHelper: Helper
   ) {
     this.searchSub$
       .pipe(debounceTime(1000), distinctUntilChanged())
-      .subscribe(text => this.searchController.setSearchResults(text));
+      .subscribe(text => {
+        if (text) {
+          this.searchController.setSearchResults(text)
+        }
+      });
   }
 
   @HostListener("window:scroll", [])

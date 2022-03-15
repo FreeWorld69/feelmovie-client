@@ -93,7 +93,7 @@
           (redirected)="closeSearch()"
           [link]="helperService.configs.routeRootNames.details.build(searchResult?.movieDetailsId ?? 0)"
           [title]="searchResult?.engTitle ?? searchResult?.geoTitle ?? ''"
-          [imgSrc]="searchResult?.posterS240 ?? searchResult?.poster ?? searchResult?.covers?.s1920 ?? ''"
+          [imgSrc]="tempHelper.getImage(searchResult, 'SearchResultsSchema')"
         >
         </app-search-movie-card>
       </div>

@@ -6,6 +6,7 @@ import { SvgIconEnum } from "../../../components/@custom/svg/svg-icon.enum";
 import { DetailedMovieState } from "../../../../data/modules/detailed/detailed-movie.state";
 import { DetailedMovieController } from "../../../../data/modules/detailed/detailed-movie.controller";
 import { first, mergeMap, Observable, } from "rxjs";
+import { SharedService } from "../../../../utils/shared-servcie.service";
 
 type CompletedAction = ActionCompletion<DetailedMovieActions.UpdateSeries>;
 
@@ -23,6 +24,7 @@ export class SidenavComponent {
     private readonly detailedMovieController: DetailedMovieController,
     private readonly store: Store,
     private readonly actions$: Actions,
+    private readonly sharedService: SharedService
   ) {
     this.actions$
       .pipe(ofActionCompleted(DetailedMovieActions.UpdateSeries))
@@ -43,6 +45,7 @@ export class SidenavComponent {
         }
 
         this.detailedMovieController.setSeries(season, episode, lang);
+        this.sharedService.videoPlay();
       });
   }
 

@@ -1,12 +1,3 @@
-<!--<plyr style="display: block;"-->
-<!--      plyrTitle="Video 1"-->
-<!--      [plyrPlaysInline]="true"-->
-<!--      [plyrSources]="videoSources"-->
-<!--      (plyrInit)="player = $event"-->
-<!--      (plyrPlay)="played($event)">-->
-<!--</plyr>-->
-
-
 <ng-container *ngIf="movieDetails$ | async as movieDetails">
   <ng-container *ngIf="videoSources$ | async as videoSources">
     <div
@@ -14,8 +5,9 @@
       plyr
       plyrTitle="Custom video"
       [plyrPlaysInline]="true"
-      [plyrPoster]="movieDetails?.covers?.s1920 ?? ''"
+      [plyrPoster]="tempHelper.getImage(movieDetails, 'MovieSchema')"
       [plyrSources]="videoSources"
+      (plyrInit)="initPlyr($event)"
       (plyrPlay)="played($event)"></div>
   </ng-container>
 </ng-container>

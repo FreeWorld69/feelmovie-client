@@ -4,9 +4,9 @@ import { Observable } from "rxjs";
 import { Select } from "@ngxs/store";
 import { HomeState } from "../../../data/modules/home/home.state";
 import { MovieSchema } from "../../../data/schemas/core/movie.schema";
-import { TempHelper } from "../tempHelper";
 import { SwiperComponent } from "swiper/angular";
 import { HelperService } from "../../../utils/helper.service";
+import { Helper } from "../../../utils/helper";
 
 @Component({
   selector: 'app-home',
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   constructor(
     private readonly homeController: HomeController,
-    public tempHelper: TempHelper,
+    public tempHelper: Helper,
     public helperService: HelperService
   ) { }
 

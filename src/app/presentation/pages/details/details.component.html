@@ -20,7 +20,7 @@
 
           <div class="video-series">
             <app-episode-details
-              [imgSrc]="detailedMovieDetails?.poster ?? detailedMovieDetails?.posterS240 ?? ''"
+              [imgSrc]="tempHelper.getImage(detailedMovieDetails, 'ExtendedDetails')"
               [releaseYear]="detailedMovieDetails?.releaseYear ?? ''"
               [duration]="detailedMovieDetails?.duration?.toString() ?? ''"
               [title]="detailedMovieDetails?.engTitle ?? detailedMovieDetails?.geoTitle ?? ''"
@@ -54,7 +54,7 @@
             </div>
 
             <app-episode-details
-              [imgSrc]="detailedMovieDetails?.poster ?? detailedMovieDetails?.posterS240 ?? ''"
+              [imgSrc]="tempHelper.getImage(detailedMovieDetails, 'ExtendedDetails')"
               [releaseYear]="detailedMovieDetails?.releaseYear ?? ''"
               [duration]="detailedMovieDetails?.duration?.toString() ?? ''"
               [title]="detailedMovieDetails?.engTitle ?? detailedMovieDetails?.geoTitle ?? ''"
