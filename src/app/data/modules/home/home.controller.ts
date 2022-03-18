@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { HomeActions } from "./home.actions";
-import { HomeApiService } from "../../network/store/home-api.service";
+import { HomeApiService } from "../../network-old/store/home-api.service";
 import { Store } from "@ngxs/store";
 import { MovieSchema } from "../../schemas/core/movie.schema";
 

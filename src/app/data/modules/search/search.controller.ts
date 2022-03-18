@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { SearchApiService } from "../../network/store/search-api.service";
+import { SearchApiService } from "../../network-old/store/search-api.service";
 import { SearchService } from "./services/search.service";
 
 @Injectable()

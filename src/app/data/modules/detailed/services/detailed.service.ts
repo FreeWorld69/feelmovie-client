@@ -5,7 +5,7 @@ import { DetailedMovieActions } from "../detailed-movie.actions";
 import { SeriesObject } from "../detailed-movie.metadata";
 import { Store } from "@ngxs/store";
 import { PlyrQualities } from "../../../../shared/enums/plyr.enum";
-import { DetailsApiService } from "../../../network/store/details-api.service";
+import { DetailsApiService } from "../../../network-old/store/details-api.service";
 import { DetailedMovieState } from "../detailed-movie.state";
 
 @Injectable()

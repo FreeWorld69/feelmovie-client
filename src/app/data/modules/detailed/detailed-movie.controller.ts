@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { DetailedMovieActions } from "./detailed-movie.actions";
 import { Store } from "@ngxs/store";
-import { DetailsApiService } from "../../network/store/details-api.service";
+import { DetailsApiService } from "../../network-old/store/details-api.service";
 import { DetailedService } from "./services/detailed.service";
 import { DetailedMovieState } from "./detailed-movie.state";
 import { SeriesObject } from "./detailed-movie.metadata";
