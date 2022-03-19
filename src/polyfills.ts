@@ -51,3 +51,7 @@ import 'zone.js';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+// import '@angular/core/esm2020/src/reflection';
+// import 'core-js/es/reflect';
+import 'reflect-metadata'

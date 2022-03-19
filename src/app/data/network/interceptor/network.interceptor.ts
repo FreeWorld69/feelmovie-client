@@ -9,10 +9,11 @@ export class NetworkInterceptor implements yg.AxiosfitRequestInterceptor, yg.Axi
     config.headers = {
       'content-type': 'application/json',
       Accept: 'application/json',
-      'User-Agent': process.env.NG_MOVIE_API_HEADER_USER_AGENT,
-      'x-source': process.env.NG_MOVIE_API_HEADER_X_SOURCE,
-      origin: process.env.NG_MOVIE_API_HEADER_ORIGIN,
-      referer: process.env.NG_MOVIE_API_HEADER_REFERER,
+      'x-source': process.env.NG_APP_MOVIE_API_HEADER_X_SOURCE,
+      // unsafe headers are not set in client
+      'User-Agent': process.env.NG_APP_MOVIE_API_HEADER_USER_AGENT,
+      origin: process.env.NG_APP_MOVIE_API_HEADER_ORIGIN,
+      referer: process.env.NG_APP_MOVIE_API_HEADER_REFERER,
     };
 
     // console.log('----------------------------');
@@ -33,13 +34,6 @@ export class NetworkInterceptor implements yg.AxiosfitRequestInterceptor, yg.Axi
   }
 
   onResponse(response: yg.AxiosResponse): yg.AxiosResponse | Promise<yg.AxiosResponse> {
-    console.log('=======================[]');
-    console.log(response.status);
-    console.log(response.headers);
-    console.log(response.statusText);
-    console.log(response.config);
-    console.log('=======================[]');
-
     return response.data;
   }
 }

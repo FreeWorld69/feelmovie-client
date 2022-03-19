@@ -1,14 +1,16 @@
-import { MovieApiDeclares } from '../declares/movie_api_declares';
+import { MovieApiDeclares } from './movie_api_declares';
 import { MovieDetailsSchema, MovieSchema } from '../schemas/movie/movie.schema';
 import { plainToInstance } from 'class-transformer';
 import { Axiosfit } from '@yggdrasilts/axiosfit';
 import { ActorsSchema } from '../schemas/actors/actors.schema';
 import { SeasonFilesSchema } from '../schemas/season/season_files.schema';
 import { SearchResultsSchema } from '../schemas/seach/search_results.schema';
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class MoviesApiTransform implements MovieApiDeclares {
   private static moviesApiService = new Axiosfit<MovieApiDeclares>()
-    .baseUrl(process.env.NG_MOVIE_API_URL)
+    .baseUrl(process.env.NG_APP_MOVIE_API_URL)
     .create(MovieApiDeclares);
 
   async getMovies(

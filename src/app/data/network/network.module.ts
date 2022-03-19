@@ -1,7 +1,8 @@
-import { MoviesApiTransform } from "./services/movie_api.transform";
 import { NgModule } from "@angular/core";
+import { MoviesApiTransform } from "./declares/movie_api.transform";
+import { MovieApiService } from "./services/movie_api.service";
 
 @NgModule({
-    providers: [MoviesApiTransform],
+    providers: [MoviesApiTransform, MovieApiService],
 })
 export class NetworkModule {}

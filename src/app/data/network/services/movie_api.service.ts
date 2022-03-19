@@ -8,8 +8,8 @@ import { SeasonFileSchema } from "../../schemas/core/season_file.schema";
 
 
 @Injectable()
-export class MovieService {
-  private static SOURCE = process.env.NG_MOVIE_API_SOURCE_PARAM;
+export class MovieApiService {
+  private static SOURCE = process.env.NG_APP_MOVIE_API_SOURCE_PARAM;
   private static PER_PAGE = 20;
   private static TYPE = 'movie';
   private static PERIOD = 'month';
@@ -27,9 +27,9 @@ export class MovieService {
 
     const { data } = await this.moviesApiTransform.getMovies(
       String(page),
-      String(MovieService.PER_PAGE),
+      String(MovieApiService.PER_PAGE),
       String(sortParam),
-      String(MovieService.SOURCE),
+      String(MovieApiService.SOURCE),
       String(filterInit),
       String(filterSort),
       undefined,
@@ -54,9 +54,9 @@ export class MovieService {
     const { data } = await this.moviesApiTransform.getTopMovies(
       String(page),
       String(perPage),
-      String(MovieService.TYPE),
-      String(MovieService.SOURCE),
-      String(MovieService.PERIOD),
+      String(MovieApiService.TYPE),
+      String(MovieApiService.SOURCE),
+      String(MovieApiService.PERIOD),
       String(filterWithActors),
       String(filterWithDirectors),
     );
@@ -65,7 +65,7 @@ export class MovieService {
   }
 
   async getPopularMovies(): Promise<MovieSchema[]> {
-    const { data } = await this.moviesApiTransform.getPopularMovies(String(MovieService.SOURCE));
+    const { data } = await this.moviesApiTransform.getPopularMovies(String(MovieApiService.SOURCE));
 
     return plainToInstance(MovieSchema, data || [], { enableCircularCheck: true });
   }
@@ -73,7 +73,7 @@ export class MovieService {
   async getGeneralDetails(movieDetailsId: number): Promise<MovieSchema> {
     const { data } = await this.moviesApiTransform.getGenericMovieDetails(
       movieDetailsId,
-      MovieService.SOURCE,
+      MovieApiService.SOURCE,
       '1',
     );
 
@@ -88,7 +88,7 @@ export class MovieService {
     const { data } = await this.moviesApiTransform.search(
       String(page),
       String(perPage),
-      MovieService.SOURCE,
+      MovieApiService.SOURCE,
       keywords,
     );
 
@@ -101,7 +101,7 @@ export class MovieService {
     const { data } = await this.moviesApiTransform.getSeasonFiles(
       id,
       defaultForMovie,
-      MovieService.SOURCE,
+      MovieApiService.SOURCE,
     );
 
     if (!data || !data.length) {
@@ -112,7 +112,7 @@ export class MovieService {
   }
 
   async getSeries(id: number, season: number): Promise<SeasonFileSchema[]> {
-    const { data } = await this.moviesApiTransform.getSeasonFiles(id, season, MovieService.SOURCE);
+    const { data } = await this.moviesApiTransform.getSeasonFiles(id, season, MovieApiService.SOURCE);
 
     return plainToInstance(SeasonFileSchema, data || [], { enableCircularCheck: true });
   }

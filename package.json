@@ -25,6 +25,7 @@
     "class-transformer": "^0.5.1",
     "ngx-plyr": "^4.0.0",
     "plyr": "^3.6.12",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "~7.5.0",
     "swiper": "^8.0.6",
     "tslib": "^2.3.0",

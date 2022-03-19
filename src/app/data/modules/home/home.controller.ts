@@ -1,26 +1,27 @@
-import { inject, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HomeActions } from "./home.actions";
-import { HomeApiService } from "../../network-old/store/home-api.service";
 import { Store } from "@ngxs/store";
-import { MovieSchema } from "../../schemas/core/movie.schema";
+import { MovieApiService } from "../../network/services/movie_api.service";
 
 @Injectable()
 export class HomeController {
   constructor(
-    private readonly homeApiService: HomeApiService,
+    private readonly movieApiService: MovieApiService,
     private readonly store: Store
   ) {}
 
-  public initHomeData(): void {
-    const homeDataResponse = this.homeApiService.fetchHomeData();
+  public async initHomeData() {
+    const [popularMovies, topMovies, movies] = await Promise.all([
+      this.movieApiService.getPopularMovies(),
+      this.movieApiService.getTopMovies(),
+      this.movieApiService.getMovies(1, null),
+    ]);
 
-    homeDataResponse.subscribe(data => {
-      this.store.dispatch([
-        new HomeActions.SetMovies(data.movies),
-        new HomeActions.SetTopMovies(data.topMovies),
-        new HomeActions.SetPopularMovies(data.popularMovies)
-      ])
-    });
+    this.store.dispatch([
+      new HomeActions.SetPopularMovies(popularMovies),
+      new HomeActions.SetTopMovies(topMovies),
+      new HomeActions.SetMovies(movies)
+    ]);
   }
 
   public setActiveHeadImage(src: string): void {
