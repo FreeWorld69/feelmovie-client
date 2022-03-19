@@ -20,6 +20,9 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 /**
  * @important
  *
+ * @electron
+ * https://buddy.works/tutorials/building-a-desktop-app-with-electron-and-angular
+ *
  * @dropdown
  * https://ng-select.github.io/ng-select#/data-sources
  *

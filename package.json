@@ -8,8 +8,9 @@
     "watch:prod": "ng build --watch --configuration development",
     "build": "ng build",
     "test": "ng test",
-    "electron" : "electron .",
-    "electron-build": "ng build"
+    "electron": "electron .",
+    "electron-build": "ng build",
+    "electron-deploy": "electron-builder"
   },
   "private": true,
   "dependencies": {
@@ -42,6 +43,7 @@
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "electron": "^17.1.2",
+    "electron-builder": "^22.14.13",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -49,5 +51,13 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.5.2"
+  },
+  "build": {
+    "appId": "com.greenfox.feelmovie",
+    "productName": "Feel Movie",
+    "target": "AppImage",
+    "directories": {
+      "output": "build"
+    }
   }
 }
