@@ -14,7 +14,8 @@ import { NgxsModule } from "@ngxs/store";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { StoreModule } from "./data/modules/store.module";
 import { HttpClientModule } from "@angular/common/http";
-import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
+import { HashLocationStrategy, LocationStrategy } from "@angular/common";
+// import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 
 
 @NgModule({
@@ -31,10 +32,18 @@ import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
     // NgxsLoggerPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     StoreModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [AppComponent],
-  providers: [HelperService],
+  providers: [
+    HelperService,
+
+    // for Electron !!!!
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

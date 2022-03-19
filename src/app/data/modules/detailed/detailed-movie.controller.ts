@@ -1,37 +1,31 @@
 import { Injectable } from "@angular/core";
 import { DetailedMovieActions } from "./detailed-movie.actions";
 import { Store } from "@ngxs/store";
-import { DetailsApiService } from "../../network-old/store/details-api.service";
 import { DetailedService } from "./services/detailed.service";
 import { DetailedMovieState } from "./detailed-movie.state";
-import { SeriesObject } from "./detailed-movie.metadata";
+import { MovieApiService } from "../../network/services/movie_api.service";
 
 @Injectable()
 export class DetailedMovieController {
   constructor(
-    private readonly detailsApiService: DetailsApiService,
     private readonly detailedService: DetailedService,
+    private readonly movieApiService: MovieApiService,
     private readonly store: Store,
   ) {}
-  public initDetailedData(movieDetailsId: number): void {
-    const detailedMovieResponse = this.detailsApiService.fetchDetails(movieDetailsId);
+  public async initDetailedData(movieDetailsId: number) {
+    const data = await this.movieApiService.getGeneralDetails(movieDetailsId);
 
+    this.store.dispatch(new DetailedMovieActions.SetMovieDetails(data))
 
-    detailedMovieResponse.subscribe(data => {
-      this.store.dispatch([
-        new DetailedMovieActions.SetMovieDetails(data)
-      ])
+    if (!data?.id) {
+      return;
+    }
 
-      if (!data?.id) {
-        return;
-      }
+    if (data?.isSeries) {
+      return this.detailedService.fetchAndSetDetailedMovieFiles(data.id, true, 1);
+    }
 
-      if (data?.isSeries) {
-        return this.detailedService.fetchAndSetDetailedMovieFiles(data.id, true, 1);
-      }
-
-      return this.detailedService.fetchAndSetDetailedMovieFiles(data.id, false)
-    });
+    return this.detailedService.fetchAndSetDetailedMovieFiles(data.id, false)
   }
 
   public setMovie(lang?: string): void {
@@ -74,11 +68,9 @@ export class DetailedMovieController {
     this.store.dispatch(new DetailedMovieActions.UpdateSeriesLoading(season, payload));
   }
 
-  public fetchAndSetSeries(id: number, season: number) {
-    const seriesDataResponse = this.detailsApiService.fetchSeries(id, season)
+  public async fetchAndSetSeries(id: number, season: number) {
+    const seriesDataResponse = await this.movieApiService.getSeries(id, season)
 
-    seriesDataResponse.subscribe(seriesData => {
-      this.store.dispatch(new DetailedMovieActions.UpdateSeries(seriesData, season));
-    })
+    this.store.dispatch(new DetailedMovieActions.UpdateSeries(seriesDataResponse, season));
   }
 }

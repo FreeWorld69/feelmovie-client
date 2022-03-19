@@ -5,19 +5,19 @@ import { DetailedMovieActions } from "../detailed-movie.actions";
 import { SeriesObject } from "../detailed-movie.metadata";
 import { Store } from "@ngxs/store";
 import { PlyrQualities } from "../../../../shared/enums/plyr.enum";
-import { DetailsApiService } from "../../../network-old/store/details-api.service";
 import { DetailedMovieState } from "../detailed-movie.state";
+import { MovieApiService } from "../../../network/services/movie_api.service";
 
 @Injectable()
 export class DetailedService {
   constructor(
-    private readonly detailsApiService: DetailsApiService,
-    private readonly store: Store
+    private readonly store: Store,
+    private readonly movieApiService: MovieApiService
   ) {}
 
   public fetchAndSetDetailedMovieFiles(id: number, isSeries: boolean, season: number = 1) {
     if (isSeries) {
-      return this.detailsApiService.fetchSeries(id, season).subscribe(seriesData => {
+      return this.movieApiService.getSeries(id, season).then(seriesData => {
         const seasonsData = this.store.selectSnapshot(DetailedMovieState.selectMovieDetails)?.seasons
 
         // adding data field overriding intellisense and filling first season with seriesData
@@ -36,9 +36,9 @@ export class DetailedService {
       })
     }
 
-    return this.detailsApiService.fetchMovie(id).subscribe(res => {
+    return this.movieApiService.getMovie(id).then(res => {
       this.store.dispatch(new DetailedMovieActions.SetMovieFile(res));
-    })
+    });
   }
 
   public setActiveLanguage(lang: string): void {
