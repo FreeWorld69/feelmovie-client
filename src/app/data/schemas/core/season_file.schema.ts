@@ -1,11 +1,26 @@
+import { Exclude, Expose, Type } from "class-transformer";
 import { CoversSchema } from "./basics/covers.schema";
 import { MovieFilesSchema } from "./basics/movie_files.schema";
 
-export interface SeasonFileSchema {
-    episode?: number;
-    title?: string;
-    poster?: string;
-    rating?: any;
-    covers?: CoversSchema;
-    movieFiles?: Array<MovieFilesSchema>;
+@Exclude()
+export class SeasonFileSchema {
+    @Expose()
+    public readonly episode?: number;
+
+    @Expose()
+    public readonly title?: string;
+
+    @Expose()
+    public readonly poster?: string;
+
+    @Expose()
+    public readonly rating?: any;
+
+    @Expose()
+    @Type(() => CoversSchema)
+    public readonly covers?: CoversSchema;
+
+    @Expose({name: 'files'})
+    @Type(() => MovieFilesSchema)
+    public readonly movieFiles?: Array<MovieFilesSchema>;
 }

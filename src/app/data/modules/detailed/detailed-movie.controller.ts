@@ -16,6 +16,7 @@ export class DetailedMovieController {
   public initDetailedData(movieDetailsId: number): void {
     const detailedMovieResponse = this.detailsApiService.fetchDetails(movieDetailsId);
 
+
     detailedMovieResponse.subscribe(data => {
       this.store.dispatch([
         new DetailedMovieActions.SetMovieDetails(data)
