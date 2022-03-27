@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ElectronService } from "../../../utils/electron.service";
+import { SvgIconEnum } from "../../components/@custom/svg/svg-icon.enum";
 
 const TopbarClickEvents = {
   MAXIMIZE: 'MAXIMIZE',
@@ -14,6 +15,7 @@ const TopbarClickEvents = {
 })
 export class TopbarComponent {
   public TopbarClickEvents = TopbarClickEvents;
+  public SvgIconEnum = SvgIconEnum;
 
   constructor(
     private readonly electronService: ElectronService

@@ -12,6 +12,7 @@ export class SvgComponent {
   @Input() public width: number = 14;
   @Input() public height: number = 14;
   @Input() public filled: boolean = false;
+  @Input() public svgClass: string = '';
   @Input() public type: SvgIconEnum;
 
   constructor() { }

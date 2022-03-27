@@ -1,3 +1,5 @@
+$topbar-color: #151515;
+
 .topbar {
   position: fixed;
   top: 0;
@@ -9,7 +11,7 @@
   justify-content: space-between;
 
   width: 100%;
-  background-color: #151515;
+  background-color: $topbar-color;
   height: 35px;
   z-index: 102;
   overflow: hidden;
@@ -30,16 +32,48 @@
   }
 }
 
-
 .topbar-title {
   margin-left: 5px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.7);
 }
 
+.topbar-left-buttons {
+  * {
+    -webkit-app-region: no-drag;
+  }
+
+  display: flex;
+  height: 100%;
+  margin-left: 30px;
+
+  .topbar-left-button {
+    padding: 0 5px;
+    height: 100%;
+    margin-left: 3px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover {
+      background-image: linear-gradient(rgba(69, 65, 65, 0.5), rgba(69, 65, 65, 1));
+    }
+
+    &:active, &:focus {
+      background-image: none;
+      background-color: $topbar-color;
+    }
+  }
+}
+
 .topbar-buttons {
   display: flex;
-
   user-select: initial;
   -webkit-user-select: initial;
   -webkit-app-region: no-drag;
@@ -55,7 +89,16 @@
     align-items: center;
 
     &:hover {
-      background-color: gray;
+      background-image: linear-gradient(rgba(69, 65, 65, 0.5), rgba(69, 65, 65, 1));
+    }
+
+    &:active, &:focus {
+      background-image: none;
+      background-color: $topbar-color;
+    }
+
+    &:last-child {
+      margin: 0;
     }
   }
 
