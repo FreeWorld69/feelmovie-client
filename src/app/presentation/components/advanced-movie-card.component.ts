@@ -19,7 +19,7 @@ export interface AdvancedMovieCardProps {
           <div class="card__cover pointer">
             <img [src]="imgSrc" alt="">
 
-            <a [href]="link" class="card__play">
+            <a [routerLink]="link" class="card__play">
               <app-svg
                 [filled]="true"
                 [type]="SvgIconEnum.PLAY_RIGHT"

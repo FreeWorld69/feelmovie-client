@@ -8,16 +8,23 @@ import { UtilityModule } from "../utils/utility.module";
 import { DirectiveModule } from "./directive.module";
 import { PipeModule } from "./pipe.module";
 import { FormsModule } from "@angular/forms";
+import { TopbarComponent } from "./layouts/topbar/topbar.component";
+import { ElectronService } from "../utils/electron.service";
 
 @NgModule({
   imports: [CommonModule, RoutingModule, ComponentModule, DirectiveModule, UtilityModule, PipeModule, FormsModule],
+  providers: [
+    ElectronService
+  ],
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    TopbarComponent
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    TopbarComponent
   ]
 })
 export class LayoutModule { }

@@ -158,9 +158,10 @@
 	Header
 ==============================*/
 .header__main {
+  // for electron custom topbar
   display: block;
   position: fixed;
-  top: 0;
+  top: 30px;
   left: 0;
   right: 0;
   z-index: 101;
@@ -788,14 +789,10 @@
 /*==============================
 	Content
 ==============================*/
-.content {
-  padding: 0 0 20px;
+.root-content {
+  overflow-y: auto;
+  height: 97vh;
 }
-
-//.content__head {
-//  margin-bottom: 30px;
-//  position: relative;
-//}
 
 .content__title {
   color: #fff;

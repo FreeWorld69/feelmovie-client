@@ -32,6 +32,9 @@ body {
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
 
+  // weird for custom topbar
+  overflow-y: hidden;
+
   &::-webkit-scrollbar {
     width: 0.35em;
   }

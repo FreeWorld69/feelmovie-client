@@ -34,6 +34,8 @@ export class DetailsComponent {
       if (event instanceof NavigationEnd) {
         const id = parseInt(this.route.snapshot.paramMap.get('id') ?? '');
 
+        console.log('==============')
+        console.log(id);
         if (!id) return;
 
         // load movie details
