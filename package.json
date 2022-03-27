@@ -9,6 +9,7 @@
     "build": "ng build",
     "test": "ng test",
     "electron": "electron .",
+    "electron-watch": "concurrently \"ng serve --live-reload\" \"electron .\"",
     "electron-build": "ng build",
     "electron-deploy": "electron-builder"
   },
@@ -27,6 +28,7 @@
     "@ngxs/store": "^3.7.3",
     "@yggdrasilts/axiosfit": "^0.9.2",
     "class-transformer": "^0.5.1",
+    "electron-reload": "^2.0.0-alpha.1",
     "ngx-plyr": "^4.0.0",
     "plyr": "^3.6.12",
     "reflect-metadata": "^0.1.13",
@@ -42,6 +44,7 @@
     "@ngx-env/builder": "2.0.2",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "concurrently": "^7.0.0",
     "electron": "^17.1.2",
     "electron-builder": "^22.14.13",
     "jasmine-core": "~4.0.0",

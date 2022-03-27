@@ -1,22 +1,27 @@
+const electronReload = require('electron-reload');
 const { app, BrowserWindow } = require('electron');
 
 let win;
-
-// icon: `file://${__dirname}/dist/cimon-client/assets/img/logo.png`
-// win.loadURL(`file://${__dirname}/dist/cimon-client/index.html#`);
-// const location = (loc) => `file://${__dirname}/src/${loc}`;
-
 const location = (loc) => `file://${__dirname}/dist/cimon-client/${loc}`;
+electronReload(__dirname, {});
 
 function createWindow () {
   win = new BrowserWindow({
     width: 1200,
     height: 1200,
-    icon: location('assets/img/logo.png')
+    icon: location('assets/img/logo.png'),
+    webPreferences: {
+      devTools: true
+    }
   });
 
-  console.log(location('index.html#'))
-  win.loadURL(location('index.html#'));
+
+  //! Production
+  // win.loadURL(location('index.html#'));
+
+  //! DEV
+  win.loadURL('http://localhost:4200/index.html');
+
 
   win.on('closed', function () {
     win = null;
