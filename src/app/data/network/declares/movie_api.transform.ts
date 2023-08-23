@@ -5,12 +5,12 @@ import { Axiosfit } from '@yggdrasilts/axiosfit';
 import { ActorsSchema } from '../schemas/actors/actors.schema';
 import { SeasonFilesSchema } from '../schemas/season/season_files.schema';
 import { SearchResultsSchema } from '../schemas/seach/search_results.schema';
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class MoviesApiTransform implements MovieApiDeclares {
   private static moviesApiService = new Axiosfit<MovieApiDeclares>()
-    .baseUrl(process.env.NG_APP_MOVIE_API_URL)
+    .baseUrl(process.env['NG_APP_MOVIE_API_URL'] as string)
     .create(MovieApiDeclares);
 
   async getMovies(
@@ -27,7 +27,7 @@ export class MoviesApiTransform implements MovieApiDeclares {
     filterYearRange?: string,
     filterWithActors?: string,
     filterWithDirectors?: string,
-    filterImdbRatingRange?: string,
+    filterImdbRatingRange?: string
   ): Promise<MovieSchema> {
     const data = await MoviesApiTransform.moviesApiService.getMovies(
       page,
@@ -43,7 +43,7 @@ export class MoviesApiTransform implements MovieApiDeclares {
       filterYearRange,
       filterWithActors,
       filterWithDirectors,
-      filterImdbRatingRange,
+      filterImdbRatingRange
     );
 
     return plainToInstance(MovieSchema, data);
@@ -54,14 +54,14 @@ export class MoviesApiTransform implements MovieApiDeclares {
     page?: string,
     perPage?: string,
     filterRole?: string,
-    source?: string,
+    source?: string
   ): Promise<ActorsSchema> {
     const data = await MoviesApiTransform.moviesApiService.getActors(
       movieId,
       page,
       perPage,
       filterRole,
-      source,
+      source
     );
 
     return plainToInstance(ActorsSchema, data);
@@ -70,19 +70,22 @@ export class MoviesApiTransform implements MovieApiDeclares {
   async getGenericMovieDetails(
     movieDetailsId: number,
     source?: string,
-    filterWithDirectors?: string,
+    filterWithDirectors?: string
   ): Promise<MovieDetailsSchema> {
-    const data = await MoviesApiTransform.moviesApiService.getGenericMovieDetails(
-      movieDetailsId,
-      source,
-      filterWithDirectors,
-    );
+    const data =
+      await MoviesApiTransform.moviesApiService.getGenericMovieDetails(
+        movieDetailsId,
+        source,
+        filterWithDirectors
+      );
 
     return plainToInstance(MovieDetailsSchema, data);
   }
 
   async getPopularMovies(source?: string): Promise<MovieSchema> {
-    const data = await MoviesApiTransform.moviesApiService.getPopularMovies(source);
+    const data = await MoviesApiTransform.moviesApiService.getPopularMovies(
+      source
+    );
     return plainToInstance(MovieSchema, data);
   }
 
@@ -92,7 +95,7 @@ export class MoviesApiTransform implements MovieApiDeclares {
     source?: string,
     perPage?: string,
     filterWithActors?: string,
-    filterWithDirectors?: string,
+    filterWithDirectors?: string
   ): Promise<MovieSchema> {
     const data = await MoviesApiTransform.moviesApiService.getRelatedMovies(
       movieId,
@@ -100,14 +103,22 @@ export class MoviesApiTransform implements MovieApiDeclares {
       source,
       perPage,
       filterWithActors,
-      filterWithDirectors,
+      filterWithDirectors
     );
 
     return plainToInstance(MovieSchema, data);
   }
 
-  async getSeasonFiles(id: number, season: number, source?: string): Promise<SeasonFilesSchema> {
-    const data = await MoviesApiTransform.moviesApiService.getSeasonFiles(id, season, source);
+  async getSeasonFiles(
+    id: number,
+    season: number,
+    source?: string
+  ): Promise<SeasonFilesSchema> {
+    const data = await MoviesApiTransform.moviesApiService.getSeasonFiles(
+      id,
+      season,
+      source
+    );
 
     return plainToInstance(SeasonFilesSchema, data);
   }
@@ -119,7 +130,7 @@ export class MoviesApiTransform implements MovieApiDeclares {
     source?: string,
     period?: string,
     filterWithActors?: string,
-    filterWithDirectors?: string,
+    filterWithDirectors?: string
   ): Promise<MovieSchema> {
     const data = await MoviesApiTransform.moviesApiService.getTopMovies(
       page,
@@ -128,7 +139,7 @@ export class MoviesApiTransform implements MovieApiDeclares {
       source,
       period,
       filterWithActors,
-      filterWithDirectors,
+      filterWithDirectors
     );
 
     return plainToInstance(MovieSchema, data);
@@ -143,7 +154,7 @@ export class MoviesApiTransform implements MovieApiDeclares {
     filterKeyword?: string,
     filterInit?: string,
     filterWithActors?: string,
-    filterWithDirectors?: string,
+    filterWithDirectors?: string
   ): Promise<SearchResultsSchema> {
     const data = await MoviesApiTransform.moviesApiService.search(
       page,
@@ -154,7 +165,7 @@ export class MoviesApiTransform implements MovieApiDeclares {
       filterKeyword,
       filterInit,
       filterWithActors,
-      filterWithDirectors,
+      filterWithDirectors
     );
 
     return plainToInstance(SearchResultsSchema, data);
