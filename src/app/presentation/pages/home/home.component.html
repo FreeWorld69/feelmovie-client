@@ -16,7 +16,11 @@
       <ng-template swiperSlide>
         <app-basic-movie-card
           [imgSrc]="topMovie?.covers?.s510 ?? topMovie?.covers?.s367 ?? ''"
-          [link]="helperService.configs.routeRootNames.details.build(topMovie?.movieDetailsId ?? 0)"
+          [link]="
+            helperService.configs.routeRootNames.details.build(
+              topMovie?.movieDetailsId ?? 0
+            )
+          "
           [rating]="topMovie?.imdb ?? 0"
           [title]="topMovie?.engTitle ?? ''"
           [categories]="tempHelper.getGenres(topMovie?.genres)"
@@ -28,18 +32,19 @@
 </app-basic-movie-carousel-card>
 
 <section class="content" style="margin-top: 100px">
-  <!-- content title -->
   <div class="container">
     <h2 class="content__title">New items</h2>
   </div>
 
-  <!-- content tab-group nav -->
   <my-tabs [classNames]="['shadow-bottom']">
     <my-tab tabTitle="NEW RELEASES">
-      <div class="row" style="width: 100%;margin: 0">
-        <!-- content tab-group -->
+      <div class="row" style="width: 100%; margin: 0">
         <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="tab-1" aria-labelledby="1-tab">
+          <div
+            class="tab-pane fade show active"
+            id="tab-1"
+            aria-labelledby="1-tab"
+          >
             <div class="row">
               <div
                 class="col-6 col-sm-12 col-lg-6"
@@ -47,7 +52,11 @@
               >
                 <app-advanced-movie-card
                   [imgSrc]="movie?.covers?.s510 ?? ''"
-                  [link]="helperService.configs.routeRootNames.details.build(movie?.movieDetailsId ?? 0)"
+                  [link]="
+                    helperService.configs.routeRootNames.details.build(
+                      movie?.movieDetailsId ?? 0
+                    )
+                  "
                   [rating]="movie?.imdb ?? 0"
                   [title]="movie?.engTitle ?? ''"
                   [categories]="tempHelper.getGenres(movie?.genres)"
@@ -71,20 +80,3 @@
     </my-tab>
   </my-tabs>
 </section>
-
-
-<!--
-TODO show more
-<div class="col-12">
-  <a href="#" class="section__btn">Show more</a>
-</div>
-
-<app-basic-movie-card
-  [imgSrc]="'https://i.pinimg.com/564x/23/2e/10/232e10e134cf1d24f10dae39073377d7--gifs-anim%C3%A9s-animated-gifs.jpg'"
-  [link]="'/'"
-  [rating]="1.7"
-  [title]="x + ' <--The Devil Princess'"
-  [categories]="['Wassup', 'Hello']"
->
-</app-basic-movie-card>
--->

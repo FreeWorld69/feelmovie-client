@@ -2,17 +2,26 @@
   appClickOutside
   class="header__main"
   (clickOutside)="closeSearch()"
-  [ngClass]="{'background-black': searchIsActive}"
+  [ngClass]="{ 'background-black': searchIsActive }"
 >
-  <div class="header__wrap transition-all" [ngClass]="{'background-black': shouldShowHeadBackground}">
+  <div
+    class="header__wrap transition-all"
+    [ngClass]="{ 'background-black': shouldShowHeadBackground }"
+  >
     <div class="container">
       <div class="row">
         <div class="col-12">
           <div class="header__content">
             <!-- header logo -->
-            <a [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.home)"
-               class="header__logo">
-              <img src="assets/img/logo.png" alt=""/>
+            <a
+              [routerLink]="
+                helperService.routeCheckFormat(
+                  helperService.configs.routeRootNames.home
+                )
+              "
+              class="header__logo"
+            >
+              <img src="assets/img/logo.png" alt="" />
             </a>
 
             <!-- header nav -->
@@ -40,7 +49,11 @@
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
-                  [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.home)"
+                  [routerLink]="
+                    helperService.routeCheckFormat(
+                      helperService.configs.routeRootNames.home
+                    )
+                  "
                 >
                   Home
                 </a>
@@ -48,7 +61,11 @@
 
               <li class="header__nav-item">
                 <a
-                  [routerLink]="helperService.routeCheckFormat(helperService.configs.routeRootNames.signIn)"
+                  [routerLink]="
+                    helperService.routeCheckFormat(
+                      helperService.configs.routeRootNames.signIn
+                    )
+                  "
                   class="join-now-button"
                 >
                   Sign In
@@ -91,7 +108,11 @@
         <app-search-movie-card
           *ngFor="let searchResult of searchResults$ | async"
           (redirected)="closeSearch()"
-          [link]="helperService.configs.routeRootNames.details.build(searchResult?.movieDetailsId ?? 0)"
+          [link]="
+            helperService.configs.routeRootNames.details.build(
+              searchResult?.movieDetailsId ?? 0
+            )
+          "
           [title]="searchResult?.engTitle ?? searchResult?.geoTitle ?? ''"
           [imgSrc]="tempHelper.getImage(searchResult, 'SearchResultsSchema')"
         >

@@ -1,11 +1,15 @@
-import Plyr from "plyr";
-import { Action, Selector, State, StateContext } from "@ngxs/store";
-import { patch, updateItem } from "@ngxs/store/operators";
-import { Injectable } from "@angular/core";
-import { DetailedMovieStateModel, DM_STATE_TOKEN, ExtendedDetails, SeriesObject } from "./detailed-movie.metadata";
-import { DetailedMovieActions } from "./detailed-movie.actions";
-import { SeasonFileSchema } from "../../schemas/core/season_file.schema";
-
+import Plyr from 'plyr';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { patch, updateItem } from '@ngxs/store/operators';
+import { Injectable } from '@angular/core';
+import {
+  DetailedMovieStateModel,
+  DM_STATE_TOKEN,
+  ExtendedDetails,
+  SeriesObject,
+} from './detailed-movie.metadata';
+import { DetailedMovieActions } from './detailed-movie.actions';
+import { SeasonFileSchema } from '../../schemas/core/season_file.schema';
 
 type CurrentCtx = StateContext<DetailedMovieStateModel>;
 
@@ -16,13 +20,15 @@ type CurrentCtx = StateContext<DetailedMovieStateModel>;
     series: [],
     details: {},
     suggested: [],
-    videoSources: []
-  }
+    videoSources: [],
+  },
 })
 @Injectable()
 export class DetailedMovieState {
   @Selector([DM_STATE_TOKEN])
-  public static selectMovieDetails(state: DetailedMovieStateModel): ExtendedDetails {
+  public static selectMovieDetails(
+    state: DetailedMovieStateModel
+  ): ExtendedDetails {
     return state.details;
   }
 
@@ -37,87 +43,119 @@ export class DetailedMovieState {
   }
 
   @Selector([DM_STATE_TOKEN])
-  public static selectVideoSources(state: DetailedMovieStateModel): Plyr.Source[] {
+  public static selectVideoSources(
+    state: DetailedMovieStateModel
+  ): Plyr.Source[] {
     return state.videoSources;
   }
 
   @Action(DetailedMovieActions.SetMovieDetails)
-  public setMovieDetails(ctx: CurrentCtx, action: DetailedMovieActions.SetMovieDetails): void {
-    ctx.patchState({details: action.movie})
+  public setMovieDetails(
+    ctx: CurrentCtx,
+    action: DetailedMovieActions.SetMovieDetails
+  ): void {
+    ctx.patchState({ details: action.movie });
   }
 
   @Action(DetailedMovieActions.SetMovieFile)
-  public setMovieFile(ctx: CurrentCtx, action: DetailedMovieActions.SetMovieFile): void {
-    ctx.patchState({movie: action.seasonFile})
+  public setMovieFile(
+    ctx: CurrentCtx,
+    action: DetailedMovieActions.SetMovieFile
+  ): void {
+    ctx.patchState({ movie: action.seasonFile });
   }
 
   @Action(DetailedMovieActions.SetSeries)
-  public setSeries(ctx: CurrentCtx, action: DetailedMovieActions.SetSeries): void {
-    ctx.patchState({series: action.emptySeasonData});
+  public setSeries(
+    ctx: CurrentCtx,
+    action: DetailedMovieActions.SetSeries
+  ): void {
+    ctx.patchState({ series: action.emptySeasonData });
   }
 
   @Action(DetailedMovieActions.UpdateSeries)
-  public updateSeries(ctx: CurrentCtx, action: DetailedMovieActions.UpdateSeries): void {
+  public updateSeries(
+    ctx: CurrentCtx,
+    action: DetailedMovieActions.UpdateSeries
+  ): void {
     ctx.setState(
       patch({
         series: updateItem<SeriesObject>(
-          el => el?.number === action.season,
-          patch({data: action.seasonData})
-        )
+          (el) => el?.number === action.season,
+          patch({ data: action.seasonData })
+        ),
       })
-    )
+    );
   }
 
   @Action(DetailedMovieActions.SetActiveLanguage)
-  public setActiveLanguage(ctx: CurrentCtx, action: DetailedMovieActions.SetActiveLanguage): void {
+  public setActiveLanguage(
+    ctx: CurrentCtx,
+    action: DetailedMovieActions.SetActiveLanguage
+  ): void {
     const currentDetails = ctx.getState().details;
-    const updatedDetails = {...currentDetails, activeLanguage: action.lang }
+    const updatedDetails = { ...currentDetails, activeLanguage: action.lang };
 
-    ctx.patchState({details: updatedDetails})
+    ctx.patchState({ details: updatedDetails });
   }
 
   @Action(DetailedMovieActions.SetVideoSources)
-  public setVideoSources(ctx: CurrentCtx, action: DetailedMovieActions.SetVideoSources): void {
-    ctx.patchState({videoSources: action.videoSources})
+  public setVideoSources(
+    ctx: CurrentCtx,
+    action: DetailedMovieActions.SetVideoSources
+  ): void {
+    ctx.patchState({ videoSources: action.videoSources });
   }
 
   @Action(DetailedMovieActions.SetActiveSeason)
-  public setActiveSeason(ctx: CurrentCtx, action: DetailedMovieActions.SetActiveSeason): void {
+  public setActiveSeason(
+    ctx: CurrentCtx,
+    action: DetailedMovieActions.SetActiveSeason
+  ): void {
     const currentDetails = ctx.getState().details;
-    const updatedDetails = {...currentDetails, activeSeason: action.season }
+    const updatedDetails = { ...currentDetails, activeSeason: action.season };
 
-    ctx.patchState({details: updatedDetails})
+    ctx.patchState({ details: updatedDetails });
   }
 
   @Action(DetailedMovieActions.SetActiveEpisode)
-  public setActiveEpisode(ctx: CurrentCtx, action: DetailedMovieActions.SetActiveEpisode): void {
+  public setActiveEpisode(
+    ctx: CurrentCtx,
+    action: DetailedMovieActions.SetActiveEpisode
+  ): void {
     const currentDetails = ctx.getState().details;
-    const updatedDetails = {...currentDetails, activeEpisode: action.episode }
+    const updatedDetails = { ...currentDetails, activeEpisode: action.episode };
 
-    ctx.patchState({details: updatedDetails})
+    ctx.patchState({ details: updatedDetails });
   }
 
   @Action(DetailedMovieActions.UpdateSeriesLoading)
-  public updateSeriesLoading(ctx: CurrentCtx, action: DetailedMovieActions.UpdateSeriesLoading): void {
+  public updateSeriesLoading(
+    ctx: CurrentCtx,
+    action: DetailedMovieActions.UpdateSeriesLoading
+  ): void {
     ctx.setState(
       patch({
         series: updateItem<SeriesObject>(
-          el => el?.number === action.season,
-          patch({screenLoading: action.screenLoading})
-        )
+          (el) => el?.number === action.season,
+          patch({ screenLoading: action.screenLoading })
+        ),
       })
-    )
+    );
   }
 
   @Action(DetailedMovieActions.ToggleAccordion)
-  public toggleAccordion(ctx: CurrentCtx, action: DetailedMovieActions.ToggleAccordion): void {
+  public toggleAccordion(
+    ctx: CurrentCtx,
+    action: DetailedMovieActions.ToggleAccordion
+  ): void {
     ctx.setState(
       patch({
         series: updateItem<SeriesObject>(
-          el => el?.number === action.season,
-          patch({opened: action.opened})
-        )
+          (el) => el?.number === action.season,
+          patch({ opened: action.opened })
+        ),
       })
-    )
+    );
   }
 }

@@ -1,27 +1,40 @@
-import * as Plyr from "plyr";
-import { Injectable } from "@angular/core";
-import { MovieFilesSchema } from "../../../schemas/core/basics/movie_files.schema";
-import { DetailedMovieActions } from "../detailed-movie.actions";
-import { SeriesObject } from "../detailed-movie.metadata";
-import { Store } from "@ngxs/store";
-import { PlyrQualities } from "../../../../shared/enums/plyr.enum";
-import { DetailedMovieState } from "../detailed-movie.state";
-import { MovieApiService } from "../../../network/services/movie_api.service";
+import * as Plyr from 'plyr';
+import { Injectable } from '@angular/core';
+import { MovieFilesSchema } from '../../../schemas/core/basics/movie_files.schema';
+import { DetailedMovieActions } from '../detailed-movie.actions';
+import { SeriesObject } from '../detailed-movie.metadata';
+import { Store } from '@ngxs/store';
+import { PlyrQualities } from '../../../../shared/enums/plyr.enum';
+import { DetailedMovieState } from '../detailed-movie.state';
+import { ApiServiceRoot } from '../../../network/api.service';
 
 @Injectable()
 export class DetailedService {
   constructor(
     private readonly store: Store,
-    private readonly movieApiService: MovieApiService
+    private readonly apiServiceRoot: ApiServiceRoot
   ) {}
 
-  public fetchAndSetDetailedMovieFiles(id: number, isSeries: boolean, season: number = 1) {
+  public fetchAndSetDetailedMovieFiles(
+    id: number,
+    isSeries: boolean,
+    season: number = 1
+  ) {
+    console.log('='.repeat(20));
+    console.log({ isSeries });
     if (isSeries) {
-      return this.movieApiService.getSeries(id, season).then(seriesData => {
-        const seasonsData = this.store.selectSnapshot(DetailedMovieState.selectMovieDetails)?.seasons
+      return this.apiServiceRoot.getSeries(id, season).then((seriesData) => {
+        console.log('='.repeat(20));
+        console.log(seriesData);
+        console.log('='.repeat(20));
+        console.log(id, season);
+
+        const seasonsData = this.store.selectSnapshot(
+          DetailedMovieState.selectMovieDetails
+        )?.seasons;
 
         // adding data field overriding intellisense and filling first season with seriesData
-        const series = seasonsData?.slice()?.map(el => {
+        const series = seasonsData?.slice()?.map((el) => {
           const temp = Object.assign({}, el) as SeriesObject;
 
           // add required fields
@@ -33,20 +46,20 @@ export class DetailedService {
         }) as SeriesObject[];
 
         this.store.dispatch(new DetailedMovieActions.SetSeries(series));
-      })
+      });
     }
 
-    return this.movieApiService.getMovie(id).then(res => {
-      this.store.dispatch(new DetailedMovieActions.SetMovieFile(res));
+    return this.apiServiceRoot.getMovie(id).then((res) => {
+      this.store.dispatch(new DetailedMovieActions.SetMovieFile(res?.[0]));
     });
   }
 
   public setActiveLanguage(lang: string): void {
-    this.store.dispatch(new DetailedMovieActions.SetActiveLanguage(lang))
+    this.store.dispatch(new DetailedMovieActions.SetActiveLanguage(lang));
   }
 
   public setVideoSources(file: MovieFilesSchema): void {
-    const videoSources = file?.movies?.map(el => {
+    const videoSources = file?.movies?.map((el) => {
       let size: PlyrQualities;
 
       switch (el?.quality) {
@@ -67,8 +80,8 @@ export class DetailedService {
         src: el.src ?? '',
         type: 'video/mp4',
         provider: 'html5',
-        size
-      }
+        size,
+      };
 
       return videoSource;
     });

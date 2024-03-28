@@ -1,24 +1,26 @@
-import { DetailedMovieActions } from "../../../data/modules/detailed/detailed-movie.actions";
-import { SeasonFileSchema } from "../../../data/schemas/core/season_file.schema";
-import { ExtendedDetails } from "../../../data/modules/detailed/detailed-movie.metadata";
-import { Actions, ofActionDispatched, Select, Store } from "@ngxs/store";
-import { DetailedMovieController } from "../../../data/modules/detailed/detailed-movie.controller";
-import { DetailedMovieState } from "../../../data/modules/detailed/detailed-movie.state";
-import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
+import { DetailedMovieActions } from '../../../data/modules/detailed/detailed-movie.actions';
+import { SeasonFileSchema } from '../../../data/schemas/core/season_file.schema';
+import { ExtendedDetails } from '../../../data/modules/detailed/detailed-movie.metadata';
+import { Actions, ofActionDispatched, Select, Store } from '@ngxs/store';
+import { DetailedMovieController } from '../../../data/modules/detailed/detailed-movie.controller';
+import { DetailedMovieState } from '../../../data/modules/detailed/detailed-movie.state';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Component, ViewChild } from '@angular/core';
-import { first, Observable } from "rxjs";
-import { VideoComponent } from "./video/video.component";
-import { Helper } from "../../../utils/helper";
-import { SharedService } from "../../../utils/shared-servcie.service";
+import { first, Observable } from 'rxjs';
+import { VideoComponent } from './video/video.component';
+import { Helper } from '../../../utils/helper';
+import { SharedService } from '../../../utils/shared-servcie.service';
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+  styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
-  @Select(DetailedMovieState.selectMovieDetails) detailedMovieDetails$: Observable<ExtendedDetails>
-  @Select(DetailedMovieState.selectMovie) detailedMovie$: Observable<SeasonFileSchema>
+  @Select(DetailedMovieState.selectMovieDetails)
+  detailedMovieDetails$: Observable<ExtendedDetails>;
+  @Select(DetailedMovieState.selectMovie)
+  detailedMovie$: Observable<SeasonFileSchema>;
   @ViewChild(VideoComponent) video: VideoComponent;
 
   constructor(
@@ -28,11 +30,12 @@ export class DetailsComponent {
     private readonly route: ActivatedRoute,
     private readonly detailedMovieController: DetailedMovieController,
     private readonly sharedService: SharedService,
-    router:Router
+    router: Router
   ) {
     router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const id = parseInt(this.route.snapshot.paramMap.get('id') ?? '');
+        console.log(id);
 
         if (!id) return;
 
@@ -47,9 +50,9 @@ export class DetailsComponent {
 
         this.actions$
           .pipe(ofActionDispatched(DetailedMovieActions.SetVideoSources))
-          .subscribe(elo => {
+          .subscribe((elo) => {
             // this.video.player.play();
-          })
+          });
       }
     });
 
@@ -58,14 +61,12 @@ export class DetailsComponent {
   }
 
   public onLanguageClick(lang?: string): void {
-    this.detailedMovieDetails$
-      .pipe(first())
-      .subscribe(data => {
-        if (lang && data.activeLanguage !== lang) {
-          this.detailedMovieController.setMovie(lang);
-          this.playVideo();
-        }
-      });
+    this.detailedMovieDetails$.pipe(first()).subscribe((data) => {
+      if (lang && data.activeLanguage !== lang) {
+        this.detailedMovieController.setMovie({ lang });
+        this.playVideo();
+      }
+    });
   }
 
   private playVideo() {
@@ -78,7 +79,7 @@ export class DetailsComponent {
   private loadMovieData(): void {
     this.actions$
       .pipe(ofActionDispatched(DetailedMovieActions.SetMovieFile))
-      .subscribe((data: DetailedMovieActions.SetMovieFile) => {
+      .subscribe((_data: DetailedMovieActions.SetMovieFile) => {
         this.detailedMovieController.setMovie();
       });
   }
